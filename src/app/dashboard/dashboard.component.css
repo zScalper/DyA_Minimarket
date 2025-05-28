@@ -1,0 +1,26 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Contenido del dashboard */
+.dashboard-content {
+  flex-grow: 1; /* Ocupar todo el espacio disponible */
+  padding: 20px;
+  margin-left: 250px; /* Espacio para que el contenido no se solape con el sidebar */
+  overflow-y: auto;
+}
+
+/* Responsive: en móvil, el sidebar se oculta */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .dashboard-content {
+    margin-left: 0;
+  }
+}
+
+

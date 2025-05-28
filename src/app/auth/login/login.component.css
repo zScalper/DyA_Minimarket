@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Contenedor principal del login */
+.login-container {
+    width: 100%;
+    max-width: 300px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    margin: 200px auto;
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    font-family: 'Poppins', Sans-serif;
+    font-weight: 600;
+    color: #333;
+    text-decoration: underline;
+}
+
+/* Grupo de entrada */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+.input-group label {
+    font-family: 'Poppins', Sans-serif;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
+    
+}
+
+.input-group input {
+    width: 96%;
+    padding: 8px;
+    font-family: 'Poppins', Sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #000000;
+}
+
+/* Botón */
+button {
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', Sans-serif;
+    margin:auto;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 40%;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+button:disabled {
+    background-color: #000000;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #FCB830;
+    border:2px solid ;/* Borde */
+}
+
+/* Mensajes de error */
+.error-message {
+    color: red;
+    font-family: 'Poppins', Sans-serif;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
