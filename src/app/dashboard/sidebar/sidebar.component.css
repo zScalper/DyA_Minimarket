@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Diseño base del sidebar */
+.sidebar {
+    position: fixed;
+    font-family: 'Poppins', Sans-serif;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: #262626;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Cabecera móvil */
+.mobile-header {
+    font-family: 'Poppins', Sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centrar el contenido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #FCB830;
+    color: black;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.mobile-header span {
+    margin-right: 40px;
+}
+
+/* Ajuste para la hamburguesa dentro de la cabecera */
+.mobile-header .hamburguesa {
+    position: absolute;
+    left: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #262626;
+    cursor: pointer;
+}
+
+/* Sidebar en móviles (oculto por defecto) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: 100vh;
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .mobile-header.active {
+        background: black;
+        color: white;
+    }
+
+    .mobile-header.active .hamburguesa {
+        color: white;
+    }
+
+    .sidebar-logo {
+        display: none;
+    }
+}
+
+/* Ajustes de menú */
+ul {
+    list-style: none;
+    padding: 10px;
+}
+
+li {
+    position: relative;
+    padding: 10px;
+    text-align: left;
+    transition: background 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+/* Logo en el sidebar */
+.sidebar-logo {
+    text-align: center;
+    padding: 15px;
+}
+
+.sidebar-logo img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Fondo dorado cuando la opción está activa */
+li.active {
+    background: #FCB830;
+    color: black;
+    border-radius: 10px;
+}
+
+/* Enlaces */
+li a,
+.dropdown span {
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dropdown span {
+    display: block;
+    font-weight: bold;
+}
+
+.dropdown ul {
+    display: none;
+    padding-left: 15px;
+}
+
+.dropdown ul.active {
+    display: block;
+}
+
+/* Estilos para desktop */
+@media (min-width: 768px) {
+    .sidebar {
+        transform: translateX(0);
+        width: 250px;
+    }
+
+    .hamburguesa {
+        display: none;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+}
