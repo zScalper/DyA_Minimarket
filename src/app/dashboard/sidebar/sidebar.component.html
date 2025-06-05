@@ -1,13 +1,8 @@
 <nav class="sidebar" [class.active]="menuActivo">
-    <div class="sidebar-logo">
-        <img src="assets/logo.png" alt="Logo">
-    </div>
-    <button class="hamburguesa" (click)="toggleMenu()">☰</button>
     <ul>
         <li class="dropdown" [class.active]="seccionActiva === '/dashboard/inicio'">
             <span routerLink="/dashboard/inicio" (click)="setActiveSection('/dashboard/inicio')">Inicio</span>
         </li>
-
         <li class="dropdown">
             <span (click)="toggleSubmenu('almacen')">Almacén</span>
             <ul [class.active]="submenuActivo['almacen']">

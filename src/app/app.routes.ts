@@ -19,7 +19,11 @@ export const routes: Routes = [
         path: 'login',
         component: LoginComponent
     },
+    { 
+        path: '', redirectTo: 'login', pathMatch: 'full' 
+    },
     { path: 'dashboard', component: DashboardComponent, children: [
+        { path: '', redirectTo: 'inicio', pathMatch: 'full' },
         { path: 'inicio', component: HomeComponent },
         { path: 'almacen', component: AlmacenComponent, children: [
             { path: 'inventario', component: InventarioComponent },

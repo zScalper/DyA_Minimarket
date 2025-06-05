@@ -1,8 +1,17 @@
+<div class="mobile-header" [class.active]="menuActivo">
+  <button class="hamburguesa" (click)="toggleMenu()">☰</button>
+  <span *ngIf="!menuActivo">{{ vistaActual }}</span>
+  <div class="sidebar-logo" *ngIf="menuActivo">
+    <img src="assets/logo.png" alt="Logo">
+  </div>
+</div>
+
 <div class="dashboard-container">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [menuActivo]="menuActivo" (toggleSidebar)="toggleMenu()"></app-sidebar>
   <main class="dashboard-content">
     <router-outlet></router-outlet>
   </main>
 </div>
+
 
 

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* Diseño base del sidebar */
 .sidebar {
     position: fixed;
     font-family: 'Poppins', Sans-serif;
@@ -12,21 +13,23 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.sidebar.active {
-    transform: translateX(0);
+/* Sidebar en móviles (oculto por defecto) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: 100vh;
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+        margin-top: 65px; 
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
 }
 
-.hamburguesa {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #FCB830;
-    cursor: pointer;
-}
-
+/* Ajustes de menú */
 ul {
     list-style: none;
     padding: 10px;
@@ -35,12 +38,12 @@ ul {
 li {
     position: relative;
     padding: 10px;
-    /*padding-left: 3rem;*/
     text-align: left;
     transition: background 0.3s ease-in-out;
     border-radius: 10px;
 }
 
+/* Logo en el sidebar */
 .sidebar-logo {
     text-align: center;
     padding: 15px;
@@ -50,7 +53,6 @@ li {
     max-width: 80%;
     height: auto;
     border-radius: 5px;
-    /* Si quieres esquinas redondeadas */
 }
 
 /* Fondo dorado cuando la opción está activa */
@@ -60,7 +62,7 @@ li.active {
     border-radius: 10px;
 }
 
-/* Ajustes para los enlaces dentro del sidebar */
+/* Enlaces */
 li a,
 .dropdown span {
     text-decoration: none;
@@ -82,12 +84,10 @@ li a,
     display: block;
 }
 
+/* Estilos para desktop */
 @media (min-width: 768px) {
     .sidebar {
         transform: translateX(0);
-    }
-
-    .hamburguesa {
-        display: none;
+        width: 250px;
     }
 }
