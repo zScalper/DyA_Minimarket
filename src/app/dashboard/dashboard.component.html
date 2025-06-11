@@ -1,8 +1,10 @@
 <div class="mobile-header" [class.active]="menuActivo">
   <button class="hamburguesa" (click)="toggleMenu()">☰</button>
   <span *ngIf="!menuActivo">{{ vistaActual }}</span>
-  <div class="sidebar-logo" *ngIf="menuActivo">
-    <img src="assets/logo.png" alt="Logo">
+  <div class="side-logo" *ngIf="menuActivo">
+    <img style="min-width: 50px;" width="50" height="50" viewBox="0 0 50 50" fill="none" src="assets/logo.png"
+      alt="Logo DyA Minimarket" class="logo">
+    <span>DyA Minimarket</span>
   </div>
 </div>
 
@@ -12,6 +14,3 @@
     <router-outlet></router-outlet>
   </main>
 </div>
-
-
-

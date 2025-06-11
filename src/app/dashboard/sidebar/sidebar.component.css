@@ -1,92 +1,146 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 /* Diseño base del sidebar */
-.sidebar {
-    position: fixed;
+.sidebar-main {
+    position: relative;
     font-family: 'Poppins', Sans-serif;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
+    width: 420px;
+    min-width: 420px;
+    height: 100dvh;
     background: #262626;
-    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
 }
 
+.sidebar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 420px;
+    height: 100dvh;
+    border-right: 1px solid hsla(0, 0%, 100%, .05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Cabecera del sidebar */
+.sidebar-header {
+    position: relative;
+    height: 100px;
+    border-bottom: 1px solid hsla(0, 0%, 100%, .05);
+    padding-left: 25px;
+    box-sizing: border-box;
+}
+
+.side-logo {
+    gap: 14px;
+    cursor: pointer;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.sidebar-header,
+.side-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.side-logo span {
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 26px;
+    color: #fff;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Menú del sidebar */
+.sidebar-menu {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.side-subtitle {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: hsla(0, 0%, 100%, .3);
+    margin-bottom: 10px;
+    transition-duration: .3s;
+    overflow: hidden;
+}
+
+.side-navs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.nav-item {
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    transition-duration: .3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.side-navIcon {
+    min-width: 22px;
+}
+
+.nav-item span {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+    white-space: nowrap;
+}
 /* Sidebar en móviles (oculto por defecto) */
 @media (max-width: 768px) {
-    .sidebar {
+    .sidebar-main {
         width: 100%;
         height: 100vh;
         transform: translateX(-100%);
         position: fixed;
         z-index: 1000;
-        margin-top: 65px; 
+        margin-top: 65px;
     }
-
-    .sidebar.active {
+    .sidebar-container {
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        border-right: none;
+    }
+    .sidebar-main.active {
         transform: translateX(0);
     }
-}
 
-/* Ajustes de menú */
-ul {
-    list-style: none;
-    padding: 10px;
-}
-
-li {
-    position: relative;
-    padding: 10px;
-    text-align: left;
-    transition: background 0.3s ease-in-out;
-    border-radius: 10px;
-}
-
-/* Logo en el sidebar */
-.sidebar-logo {
-    text-align: center;
-    padding: 15px;
-}
-
-.sidebar-logo img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 5px;
-}
-
-/* Fondo dorado cuando la opción está activa */
-li.active {
-    background: #FCB830;
-    color: black;
-    border-radius: 10px;
-}
-
-/* Enlaces */
-li a,
-.dropdown span {
-    text-decoration: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.dropdown span {
-    display: block;
-    font-weight: bold;
-}
-
-.dropdown ul {
-    display: none;
-    padding-left: 15px;
-}
-
-.dropdown ul.active {
-    display: block;
+    .sidebar-header {
+        display: none;
+    }
 }
 
 /* Estilos para desktop */
 @media (min-width: 768px) {
-    .sidebar {
+    .sidebar-main {
         transform: translateX(0);
         width: 250px;
     }
