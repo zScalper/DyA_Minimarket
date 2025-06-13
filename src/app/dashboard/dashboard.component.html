@@ -1,15 +1,13 @@
-<div class="mobile-header" [class.active]="menuActivo">
-  <button class="hamburguesa" (click)="toggleMenu()">☰</button>
-  <span *ngIf="!menuActivo">{{ vistaActual }}</span>
-  <div class="side-logo" *ngIf="menuActivo">
-    <img style="min-width: 50px;" width="50" height="50" viewBox="0 0 50 50" fill="none" src="assets/logo.png"
-      alt="Logo DyA Minimarket" class="logo">
-    <span>DyA Minimarket</span>
-  </div>
-</div>
-
 <div class="dashboard-container">
-  <app-sidebar [menuActivo]="menuActivo" (toggleSidebar)="toggleMenu()"></app-sidebar>
+  <!-- Encabezado del dashboard, recibe propiedades y eventos -->
+  <app-header [menuActivo]="menuActivo" [vistaActual]="vistaActual" (toggleMenu)="toggleSidebar()">
+  </app-header>
+
+  <!-- Sidebar de navegación, permite abrir/cerrar el menú -->
+  <app-sidebar [menuActivo]="menuActivo" (toggleSidebar)="cerrarSidebar()">
+  </app-sidebar>
+
+  <!-- Contenedor principal donde se renderizan las vistas dinámicamente -->
   <main class="dashboard-content">
     <router-outlet></router-outlet>
   </main>

@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
 /* Diseño base del sidebar */
 .sidebar-main {
     position: relative;
-    font-family: 'Poppins', Sans-serif;
+    /* Mantiene su posición en el flujo normal */
     width: 420px;
     min-width: 420px;
     height: 100dvh;
+    /* Ocupa toda la altura de la pantalla */
     background: #262626;
+    /* Color de fondo oscuro */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Agrega sombra lateral */
     transition: transform 0.3s ease-in-out;
+    /* Animación suave para mostrar/ocultar */
 }
 
 .sidebar-container {
@@ -29,9 +31,9 @@
     height: 100px;
     border-bottom: 1px solid hsla(0, 0%, 100%, .05);
     padding-left: 25px;
-    box-sizing: border-box;
 }
 
+/* Logo y nombre */
 .side-logo {
     gap: 14px;
     cursor: pointer;
@@ -52,6 +54,7 @@
     line-height: 26px;
     color: #fff;
     white-space: nowrap;
+    /* Evita que el texto se corte */
     opacity: 1;
     visibility: visible;
     transition: transform 0.3s ease-in-out;
@@ -81,6 +84,7 @@
     overflow: hidden;
 }
 
+/* Contenedor de opciones de navegación */
 .side-navs {
     width: 100%;
     display: flex;
@@ -91,10 +95,8 @@
     box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05), 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-.nav-item:hover {
-    background: linear-gradient(270deg, #2a2a2a 60%, #3a3a3a);
-    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08), 0 6px 10px rgba(0, 0, 0, 0.4);
-}
+
+/* Cada ítem de navegación */
 .nav-item {
     width: 100%;
     height: 50px;
@@ -105,13 +107,9 @@
     align-items: center;
     padding: 0 25px;
     gap: 10px;
-    box-sizing: border-box;
 }
 
-.side-navIcon {
-    min-width: 22px;
-}
-
+/* Estilos para el texto dentro de cada ítem */
 .nav-item span {
     font-weight: 700;
     font-size: 16px;
@@ -120,12 +118,40 @@
     white-space: nowrap;
 }
 
+/* Íconos de navegación */
+.side-navIcon {
+    min-width: 22px;
+}
+
+/* Estilos de hover y selección activa */
+.nav-item:hover,
+.nav-item.active {
+    background: linear-gradient(270deg, #FCB830 60%, #c99a30);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item:hover,
+.nav-item:hover span,
+.nav-item:hover .side-navIcon path,
+.nav-item.active,
+.nav-item.active span,
+.nav-item.active .side-navIcon path {
+    color: #262626;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.nav-item:hover .side-navIcon path,
+.nav-item.active .side-navIcon path {
+    fill: #262626;
+}
+
 /* Sidebar en móviles (oculto por defecto) */
 @media (max-width: 768px) {
     .sidebar-main {
         width: 100%;
         height: 100vh;
         transform: translateX(-100%);
+        /* Oculta el sidebar */
         position: fixed;
         z-index: 1000;
         margin-top: 65px;
@@ -145,6 +171,24 @@
     .sidebar-header {
         display: none;
     }
+
+    .nav-item {
+        height: 40px;
+        padding: 0 15px;
+    }
+
+    .nav-item span {
+        font-size: 14px;
+    }
+
+    .side-subtitle {
+        font-size: 12px;
+    }
+
+    .sidebar-menu {
+        padding: 15px 30px 30px;
+    }
+
 }
 
 /* Estilos para desktop */
