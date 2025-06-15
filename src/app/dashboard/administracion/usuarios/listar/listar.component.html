@@ -1,0 +1,39 @@
+<section class="usuarios-container">
+  <div class="usuarios-header">
+    <h2>Listado de Usuarios</h2>
+    <a routerLink="/dashboard/administracion/usuarios/agregar" class="usuarios-btn-nuevo">
+      + Nuevo Usuario
+    </a>
+  </div>
+
+  <div class="usuarios-tabla-wrap">
+    <table class="usuarios-tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>DNI</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios" class="usuarios-fila">
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.apellido }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.dni }}</td>
+          <td>{{ usuario.rol?.nombre }}</td>
+          <td class="usuarios-acciones">
+            <button (click)="editarUsuario(usuario.id!)" class="btn-editar">Editar</button>
+            <button (click)="eliminarUsuario(usuario.id!)" class="btn-eliminar">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+

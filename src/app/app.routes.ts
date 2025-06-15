@@ -13,7 +13,10 @@ import { RequerimientoComponent } from './dashboard/logistica/requerimiento/requ
 import { CotizacionComponent } from './dashboard/logistica/cotizacion/cotizacion.component';
 import { OrdenCompraComponent } from './dashboard/logistica/orden-compra/orden-compra.component';
 import { DespachoComponent } from './dashboard/logistica/despacho/despacho.component';
-
+import { AuthGuard } from './auth/auth.guard';
+import { ListarComponent } from './dashboard/administracion/usuarios/listar/listar.component';
+import { AgregarComponent } from './dashboard/administracion/usuarios/agregar/agregar.component';
+import { EditarComponent } from './dashboard/administracion/usuarios/editar/editar.component';
 // Configuración de rutas en Angular
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -21,7 +24,7 @@ export const routes: Routes = [
 
     // Rutas dentro del dashboard, organizadas por módulos (almacén, administración, logística)
     { 
-        path: 'dashboard', component: DashboardComponent, children: [
+        path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard], children: [
             { path: '', redirectTo: 'inicio', pathMatch: 'full' }, // Redirección dentro del dashboard
             { path: 'inicio', component: HomeComponent },
 
@@ -33,7 +36,16 @@ export const routes: Routes = [
 
             { path: 'administracion', component: AdministracionComponent, children: [
                 { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
-                { path: 'usuarios', component: UsuariosComponent },
+                {
+    path: 'usuarios',
+    component: UsuariosComponent,
+    children: [
+      { path: '', redirectTo: 'listar', pathMatch: 'full' },
+      { path: 'listar', component: ListarComponent },
+      { path: 'agregar', component: AgregarComponent },
+      { path: 'editar/:id', component: EditarComponent }
+    ]
+  },
                 { path: 'tipo-proveedor', component: TipoProveedorComponent }
             ]},
 
@@ -45,5 +57,6 @@ export const routes: Routes = [
                 { path: 'despacho', component: DespachoComponent }
             ]}
         ]
-    }
+    },
+    { path: '**', redirectTo: 'login' } // Redirigir a login si intentan acceder sin autenticación
 ];

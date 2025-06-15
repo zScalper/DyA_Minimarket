@@ -7,3 +7,9 @@
     font-feature-settings: none;
     font-variant-ligatures: none;
 }
+:root {
+  --dashboard-bg: linear-gradient(135deg, #18191c 0%, #23242a 100%);
+  --dashboard-overlay: rgba(24, 25, 28, 0.85);
+  --dashboard-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  --dashboard-border: 1px solid #23242a;
+}

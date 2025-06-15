@@ -1,0 +1,165 @@
+:host {
+    --bg: #18191c;
+  --bg-table: #23242a;
+  --bg-table-header: #22232a;
+  --text: #f5f6fa;
+  --text-muted: #b2b7be;
+  --accent: #fcb830;           /* Botón principal (Nuevo) */
+  --accent-hover: #c99a30;
+  --border: #292a2f;
+  --hover: #23242a;
+  --danger: #e05260;           /* Eliminar */
+  --danger-hover: #b93a4b;
+  --primary: #3f8efc;          /* Editar */
+  --primary-hover: #2d6fd6;
+  --btn-text-dark: #18191c;    /* Texto oscuro para contraste */
+  --btn-text-light: #fff;      /* Texto claro */
+}
+
+.usuarios-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.usuarios-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.usuarios-header h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.usuarios-btn-nuevo {
+  background-color: var(--accent);
+  color: var(--btn-text-dark);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.usuarios-btn-nuevo:hover {
+  background-color: var(--accent-hover);
+  color: var(--btn-text-light);
+}
+
+.usuarios-tabla-wrap {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.usuarios-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: var(--bg-table);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out;
+}
+
+.usuarios-tabla th,
+.usuarios-tabla td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.usuarios-tabla th {
+  background-color: var(--bg-table-header);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.usuarios-fila:hover {
+  background-color: var(--hover);
+}
+
+.usuarios-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-editar {
+  background-color: var(--primary);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-editar:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.btn-eliminar {
+  background-color: var(--danger);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: var(--danger-hover);
+  transform: scale(1.05);
+}
+
+/* Animaciones suaves */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .usuarios-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarios-tabla th,
+  .usuarios-tabla td {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .btn-editar,
+  .btn-eliminar {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+

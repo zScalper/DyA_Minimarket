@@ -5,8 +5,6 @@
     width: 420px;
     min-width: 420px;
     height: 100dvh;
-    /* Ocupa toda la altura de la pantalla */
-    background: #262626;
     /* Color de fondo oscuro */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     /* Agrega sombra lateral */
@@ -91,7 +89,7 @@
     flex-direction: column;
     border-radius: 12px;
     margin-bottom: 18px;
-    background: linear-gradient(270deg, #202020 60%, #303030);
+    background: linear-gradient(270deg, #18191c 60%, #23242a 100%);
     box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05), 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
