@@ -1,1 +1,60 @@
-<p>editar works!</p>
+<section class="agregar-usuario-container">
+    <form [formGroup]="usuarioForm" (ngSubmit)="actualizar()" novalidate class="formulario-usuario">
+        <h2>Editar Usuario</h2>
+        <div class="grupo-formulario">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" formControlName="nombre" placeholder="Escribe el nombre" />
+            <span class="mensaje-error"
+                *ngIf="usuarioForm.get('nombre')?.touched && usuarioForm.get('nombre')?.invalid">
+                * El nombre es obligatorio
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="apellido">Apellido</label>
+            <input id="apellido" type="text" formControlName="apellido" placeholder="Escribe el apellido" />
+            <span class="mensaje-error"
+                *ngIf="usuarioForm.get('apellido')?.touched && usuarioForm.get('apellido')?.invalid">
+                * El apellido es obligatorio
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="text" formControlName="telefono" placeholder="Escribe el teléfono" />
+            <span class="mensaje-error"
+                *ngIf="usuarioForm.get('telefono')?.touched && usuarioForm.get('telefono')?.invalid">
+                * El teléfono es obligatorio
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="email">Correo electrónico</label>
+            <input id="email" type="email" formControlName="email" placeholder="ejemplo@email.com" />
+            <span class="mensaje-error"
+                *ngIf="usuarioForm.get('email')?.touched && usuarioForm.get('email')?.errors as errors">
+                <ng-container *ngIf="errors['required']">* El correo es obligatorio</ng-container>
+                <ng-container *ngIf="errors['email']">* El correo no tiene un formato válido</ng-container>
+                <ng-container *ngIf="errors['conflict']">* Este correo ya está registrado</ng-container>
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="dni">DNI</label>
+            <input id="dni" type="text" maxlength="8" pattern="\d*" inputmode="numeric" formControlName="dni" placeholder="Ingrese DNI" />
+            <span class="mensaje-error"
+                *ngIf="usuarioForm.get('dni')?.touched && usuarioForm.get('dni')?.errors as errors">
+                <ng-container *ngIf="errors['required']">* El DNI es obligatorio</ng-container>
+                <ng-container *ngIf="errors['pattern']">* El DNI debe contener exactamente 8 dígitos</ng-container>
+                <ng-container *ngIf="errors['conflict']">* Este DNI ya está registrado</ng-container>
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="rol">Rol</label>
+            <select id="rol" formControlName="rol">
+                <option [ngValue]="null" disabled>Seleccione un rol</option>
+                <option *ngFor="let r of roles" [ngValue]="r">{{ r.nombre }}</option>
+            </select>
+            <span class="mensaje-error" *ngIf="usuarioForm.get('rol')?.touched && usuarioForm.get('rol')?.invalid">
+                * Debe seleccionar un rol
+            </span>
+        </div>
+        <button type="submit" [disabled]="usuarioForm.invalid">Actualizar</button>
+    </form>
+</section>

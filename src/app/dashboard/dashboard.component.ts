@@ -39,19 +39,34 @@ export class DashboardComponent {
 
   // Método que asigna nombres de vistas según la ruta actual
   getTituloVista(url: string): string {
-    const rutas: { [key: string]: string } = {
-      '/dashboard/inicio': 'Inicio',
-      '/dashboard/almacen/inventario': 'Inventario',
-      '/dashboard/almacen/ingreso-producto': 'Ingreso de Producto',
-      '/dashboard/administracion/usuarios': 'Usuarios',
-      '/dashboard/administracion/tipo-proveedor': 'Tipo de Proveedor',
-      '/dashboard/logistica/requerimiento': 'Requerimiento',
-      '/dashboard/logistica/cotizacion': 'Cotización',
-      '/dashboard/logistica/orden-compra': 'Orden de Compra',
-      '/dashboard/logistica/despacho': 'Despacho'
-    };
-
-    return rutas[url] || 'Dashboard'; // Retorna el nombre de la vista o un valor por defecto
+    if (url.startsWith('/dashboard/administracion/usuarios')) {
+      return 'Usuarios';
+    }
+    if (url.startsWith('/dashboard/almacen/inventario')) {
+      return 'Inventario';
+    }
+    if (url.startsWith('/dashboard/almacen/ingreso-producto')) {
+      return 'Ingreso de Producto';
+    }
+    if (url.startsWith('/dashboard/administracion/tipo-proveedor')) {
+      return 'Tipo de Proveedor';
+    }
+    if (url.startsWith('/dashboard/logistica/requerimiento')) {
+      return 'Requerimiento';
+    }
+    if (url.startsWith('/dashboard/logistica/cotizacion')) {
+      return 'Cotización';
+    }
+    if (url.startsWith('/dashboard/logistica/orden-compra')) {
+      return 'Orden de Compra';
+    }
+    if (url.startsWith('/dashboard/logistica/despacho')) {
+      return 'Despacho';
+    }
+    if (url.startsWith('/dashboard/inicio')) {
+      return 'Inicio';
+    }
+    return 'Dashboard';
   }
 }
 /* Este componente maneja la lógica del dashboard, incluyendo la navegación y el estado del sidebar

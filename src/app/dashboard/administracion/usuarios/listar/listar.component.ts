@@ -4,6 +4,7 @@ import { UsuarioDTO } from '../../../../models/usuario.dto';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-listar',
   imports: [CommonModule],
@@ -25,7 +26,9 @@ export class ListarComponent implements OnInit {
     });
 
   }
-
+  irANuevoUsuario() {
+    this.router.navigate(['/dashboard/administracion/usuarios/agregar']);
+  }
   editarUsuario(id: number): void {
     this.router.navigate(['dashboard/administracion/usuarios/editar', id]);
   }

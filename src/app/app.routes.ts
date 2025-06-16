@@ -23,39 +23,45 @@ export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirección a la pantalla de login
 
     // Rutas dentro del dashboard, organizadas por módulos (almacén, administración, logística)
-    { 
-        path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard], children: [
+    {
+        path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
             { path: '', redirectTo: 'inicio', pathMatch: 'full' }, // Redirección dentro del dashboard
             { path: 'inicio', component: HomeComponent },
 
-            { path: 'almacen', component: AlmacenComponent, children: [
-                { path: '', redirectTo: 'inventario', pathMatch: 'full' },
-                { path: 'inventario', component: InventarioComponent },
-                { path: 'ingreso-producto', component: IngresoProductoComponent }
-            ]},
+            {
+                path: 'almacen', component: AlmacenComponent, children: [
+                    { path: '', redirectTo: 'inventario', pathMatch: 'full' },
+                    { path: 'inventario', component: InventarioComponent },
+                    { path: 'ingreso-producto', component: IngresoProductoComponent }
+                ]
+            },
 
-            { path: 'administracion', component: AdministracionComponent, children: [
-                { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
-                {
-    path: 'usuarios',
-    component: UsuariosComponent,
-    children: [
-      { path: '', redirectTo: 'listar', pathMatch: 'full' },
-      { path: 'listar', component: ListarComponent },
-      { path: 'agregar', component: AgregarComponent },
-      { path: 'editar/:id', component: EditarComponent }
-    ]
-  },
-                { path: 'tipo-proveedor', component: TipoProveedorComponent }
-            ]},
+            {
+                path: 'administracion', component: AdministracionComponent, children: [
+                    { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
+                    {
+                        path: 'usuarios',
+                        component: UsuariosComponent,
+                        children: [
+                            { path: '', redirectTo: 'listar', pathMatch: 'full' },
+                            { path: 'listar', component: ListarComponent },
+                            { path: 'agregar', component: AgregarComponent },
+                            { path: 'editar/:id', component: EditarComponent }
+                        ]
+                    },
+                    { path: 'tipo-proveedor', component: TipoProveedorComponent }
+                ]
+            },
 
-            { path: 'logistica', component: LogisticaComponent, children: [
-                { path: '', redirectTo: 'requerimiento', pathMatch: 'full' },
-                { path: 'requerimiento', component: RequerimientoComponent },
-                { path: 'cotizacion', component: CotizacionComponent },
-                { path: 'orden-compra', component: OrdenCompraComponent },
-                { path: 'despacho', component: DespachoComponent }
-            ]}
+            {
+                path: 'logistica', component: LogisticaComponent, children: [
+                    { path: '', redirectTo: 'requerimiento', pathMatch: 'full' },
+                    { path: 'requerimiento', component: RequerimientoComponent },
+                    { path: 'cotizacion', component: CotizacionComponent },
+                    { path: 'orden-compra', component: OrdenCompraComponent },
+                    { path: 'despacho', component: DespachoComponent }
+                ]
+            }
         ]
     },
     { path: '**', redirectTo: 'login' } // Redirigir a login si intentan acceder sin autenticación

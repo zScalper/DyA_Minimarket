@@ -1,19 +1,19 @@
 :host {
-    --bg: #18191c;
-  --bg-table: #23242a;
-  --bg-table-header: #22232a;
-  --text: #f5f6fa;
-  --text-muted: #b2b7be;
-  --accent: #fcb830;           /* Botón principal (Nuevo) */
+  --bg: #fff;
+  --bg-table: #f5f6fa;
+  --bg-table-header: #23242a;
+  --text: #23242a;
+  --text-muted: #ffffff;
+  --accent: #fcb830;
   --accent-hover: #c99a30;
-  --border: #292a2f;
-  --hover: #23242a;
-  --danger: #e05260;           /* Eliminar */
+  --border: #e0e0e0;
+  --hover: #f0f1f5;
+  --danger: #ff6b81;
   --danger-hover: #b93a4b;
-  --primary: #3f8efc;          /* Editar */
+  --primary: #5b7cff;
   --primary-hover: #2d6fd6;
-  --btn-text-dark: #18191c;    /* Texto oscuro para contraste */
-  --btn-text-light: #fff;      /* Texto claro */
+  --btn-text-dark: #23242a;
+  --btn-text-light: #fff;
 }
 
 .usuarios-container {
@@ -21,6 +21,7 @@
   color: var(--text);
   padding: 1.5rem;
   border-radius: 8px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
   animation: fadeIn 0.4s ease-in;
 }
 
@@ -44,8 +45,9 @@
   font-weight: 600;
   padding: 0.6rem 1rem;
   border-radius: 6px;
-  font-weight: 500;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 

@@ -1,0 +1,14 @@
+:host {
+  --bg: #fff;
+  --bg-table: #f5f6fa;
+  --text: #23242a;
+}
+
+.usuarios-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  animation: fadeIn 0.4s ease-in;
+}
