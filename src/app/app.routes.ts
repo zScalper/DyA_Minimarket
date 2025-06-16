@@ -17,6 +17,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ListarComponent } from './dashboard/administracion/usuarios/listar/listar.component';
 import { AgregarComponent } from './dashboard/administracion/usuarios/agregar/agregar.component';
 import { EditarComponent } from './dashboard/administracion/usuarios/editar/editar.component';
+import { RegistrarComponent } from './dashboard/logistica/requerimiento/registrar/registrar.component';
 // Configuración de rutas en Angular
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -56,7 +57,13 @@ export const routes: Routes = [
             {
                 path: 'logistica', component: LogisticaComponent, children: [
                     { path: '', redirectTo: 'requerimiento', pathMatch: 'full' },
-                    { path: 'requerimiento', component: RequerimientoComponent },
+                    {
+                        path: 'requerimiento', 
+                        component: RequerimientoComponent, 
+                        children: [
+                            { path: 'registrar', component: RegistrarComponent }
+                        ]
+                    },
                     { path: 'cotizacion', component: CotizacionComponent },
                     { path: 'orden-compra', component: OrdenCompraComponent },
                     { path: 'despacho', component: DespachoComponent }

@@ -1,0 +1,28 @@
+<section class="agregar-requerimiento-container">
+  <form [formGroup]="formulario" (ngSubmit)="guardar()" novalidate class="formulario-requerimiento">
+    <h2>Registrar Requerimiento</h2>
+
+    <div class="grupo-formulario">
+      <label for="codProducto">Producto</label>
+      <input id="codProducto" type="number" formControlName="codProducto" placeholder="ID Producto" />
+      <span class="mensaje-error"
+        *ngIf="formulario.get('codProducto')?.touched && formulario.get('codProducto')?.invalid">
+        * El producto es obligatorio
+      </span>
+    </div>
+
+    <div class="grupo-formulario">
+      <label for="cantidad">Cantidad</label>
+      <input id="cantidad" type="number" formControlName="cantidad" placeholder="Cantidad" />
+      <span class="mensaje-error"
+        *ngIf="formulario.get('cantidad')?.touched && formulario.get('cantidad')?.invalid">
+        * La cantidad es obligatoria
+      </span>
+    </div>
+
+    <div class="formulario-botones">
+      <button type="submit" [disabled]="formulario.invalid">Guardar</button>
+      <button type="button" class="btn-cancelar" (click)="cancelar.emit()">Cancelar</button>
+    </div>
+  </form>
+</section>
