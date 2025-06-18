@@ -58,13 +58,15 @@ export const routes: Routes = [
                 path: 'logistica', component: LogisticaComponent, children: [
                     { path: '', redirectTo: 'requerimiento', pathMatch: 'full' },
                     {
-                        path: 'requerimiento', 
-                        component: RequerimientoComponent, 
-                        children: [
+                        path: 'requerimiento', component: RequerimientoComponent, children: [
                             { path: 'registrar', component: RegistrarComponent }
                         ]
                     },
-                    { path: 'cotizacion', component: CotizacionComponent },
+                    {
+                        path: 'cotizacion', component: CotizacionComponent, children: [
+                            { path: 'registrar', component: RegistrarComponent }
+                        ]
+                    },
                     { path: 'orden-compra', component: OrdenCompraComponent },
                     { path: 'despacho', component: DespachoComponent }
                 ]

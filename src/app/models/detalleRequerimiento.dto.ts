@@ -1,6 +1,6 @@
 import { ProductoDTO } from './producto.dto';
 export interface DetalleRequerimientoDTO {
-    id: number;
+    id?: number;
     codProducto: ProductoDTO;
     cantidad: number;
 }

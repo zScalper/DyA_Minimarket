@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-registrar',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './registrar.component.html',
-  styleUrls: ['./registrar.component.css']
+  styleUrl: './registrar.component.css'
 })
 export class RegistrarComponent {
   @Output() onGuardar = new EventEmitter<any>();
@@ -17,6 +18,7 @@ export class RegistrarComponent {
   ngOnInit(): void {
     this.formulario = this.fb.group({
       fecha: [this.hoy()],
+      fechaVencimiento: [this.mañana(), Validators.required],
       codUsuario: [null, Validators.required],
       codEstado: [null, Validators.required],
       detalles: this.fb.array([this.nuevoDetalle()])
@@ -25,7 +27,10 @@ export class RegistrarComponent {
   nuevoDetalle(): FormGroup {
     return this.fb.group({
       codProducto: [null, Validators.required],
-      cantidad: [1, [Validators.required, Validators.min(1)]]
+      cantidad: [1, [Validators.required, Validators.min(1)]],
+      precio: [1, [Validators.required, Validators.min(0)]],
+      codFormaPago: [null, Validators.required],
+      codMoneda: [null, Validators.required]
     });
   }
 
@@ -35,6 +40,12 @@ export class RegistrarComponent {
 
   hoy(): string {
     const fecha = new Date();
+    fecha.setDate(fecha.getDate());
+    return fecha.toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
+  }
+  mañana(): string {
+    const fecha = new Date();
+    fecha.setDate(fecha.getDate() + 1);
     return fecha.toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
   }
 

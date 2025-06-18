@@ -1,6 +1,6 @@
 import { EstadoDTO } from "./estado.dto";
 export interface ProductoDTO {
-  id: number;
+  id?: number;
   nombre: string;
   codCategoria: number;
   codUnidad: number;

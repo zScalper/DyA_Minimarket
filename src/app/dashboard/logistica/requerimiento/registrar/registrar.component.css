@@ -11,16 +11,21 @@
 
 .agregar-requerimiento-container {
   background-color: var(--bg);
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 550px;
-  margin: auto;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  max-width: 780px;
+  width: 100%;
+  margin: 2.5rem auto;
   color: var(--fg);
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
   animation: fadeIn 0.4s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formulario-requerimiento {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -35,12 +40,20 @@
 
 .grupo-formulario {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.grupo-formulario label {
+  min-width: 80px;
+  flex-shrink: 0;
 }
 
 .grupo-formulario input,
 .grupo-formulario select {
+  flex: 1;
   padding: 0.6rem;
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
@@ -60,7 +73,7 @@ button {
   background-color: var(--accent);
   color: #23242a;
   border: none;
-  padding: 0.7rem;
+  padding: 0.7rem 1.2rem;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
@@ -91,11 +104,20 @@ button:disabled {
 
 /* Responsive */
 @media (max-width: 600px) {
-  .agregar-usuario-container {
-    padding: 1.2rem;
+  .agregar-requerimiento-container {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+    margin: 1rem auto;
+    border-radius: 8px;
   }
 
-  .formulario-usuario h2 {
-    font-size: 1.5rem;
+  .formulario-requerimiento h2 {
+    font-size: 1.3rem;
+  }
+
+  .grupo-formulario {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
   }
 }

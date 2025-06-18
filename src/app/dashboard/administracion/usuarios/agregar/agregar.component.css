@@ -90,7 +90,7 @@ button:disabled {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .agregar-usuario-container {
     padding: 1.2rem;
   }

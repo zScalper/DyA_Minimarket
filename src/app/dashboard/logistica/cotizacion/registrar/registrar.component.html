@@ -10,20 +10,6 @@
       </span>
     </div>
 
-    <div class="grupo-formulario">
-      <label for="codUsuario">ID Usuario</label>
-      <input id="codUsuario" formControlName="codUsuario" type="number" placeholder="ID Usuario" />
-      <label for="codEstado">ID Estado</label>
-      <input id="codEstado" formControlName="codEstado" type="number" placeholder="ID Estado" />
-    </div>
-    <div class="grupo-formulario">
-      <span class="mensaje-error" *ngIf="formulario.get('codUsuario')?.touched && formulario.get('codUsuario')?.invalid">
-      * El usuario es obligatorio
-    </span>
-    <span class="mensaje-error" *ngIf="formulario.get('codEstado')?.touched && formulario.get('codEstado')?.invalid">
-      * El estado es obligatorio
-    </span>
-    </div>
     <div formArrayName="detalles">
       <div *ngFor="let detalle of detalles.controls; let i = index" [formGroupName]="i" class="detalle-producto">
         <div class="grupo-formulario">

@@ -1,5 +1,5 @@
 export interface EstadoDTO {
-  id: number;
+  id?: number;
   estado: string;
   detalleEstado: string;
 }

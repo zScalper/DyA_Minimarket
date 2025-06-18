@@ -4,7 +4,7 @@ import { UsuarioDTO } from "./usuario.dto";
 export interface RequerimientoDTO {
   id: number;
   fecha: string; // en formato ISO: 'YYYY-MM-DD'
-  codDetalleRequerimiento: DetalleRequerimientoDTO;
+  detalles: DetalleRequerimientoDTO[];
   codEstado: EstadoDTO;
   codUsuario: UsuarioDTO;
 }
