@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RequerimientoService } from '../../../../services/requerimiento.service';
+import { RequerimientoDTO } from '../../../../models/requerimiento.dto';
 @Component({
   selector: 'app-registrar',
   imports: [CommonModule, ReactiveFormsModule],
@@ -12,7 +14,7 @@ export class RegistrarComponent {
   @Output() cancelar = new EventEmitter<void>();
   formulario!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private requerimientoService: RequerimientoService) { }
 
   ngOnInit(): void {
     this.formulario = this.fb.group({
@@ -47,12 +49,18 @@ export class RegistrarComponent {
   }
 
   guardar() {
-  this.marcarTodoTocado(this.formulario);
-  if (this.formulario.valid) {
-    this.onGuardar.emit(this.formulario.value);
-    this.formulario.reset();
+    if (this.formulario.valid) {
+      const req: RequerimientoDTO = this.formulario.value;
+      this.requerimientoService.create(req).subscribe({
+        next: (res) => {
+          // Maneja éxito (puedes navegar, mostrar mensaje, etc.)
+        },
+        error: (err) => {
+          // Maneja error
+        }
+      });
+    }
   }
-}
 
 private marcarTodoTocado(formGroup: FormGroup | FormArray) {
   Object.values(formGroup.controls).forEach(control => {

@@ -16,7 +16,8 @@ export class RequerimientoComponent implements OnInit {
   requerimientos: RequerimientoDTO[] = [];
   formulario!: FormGroup;
   mostrarRegistrar = false;
-
+  mostrarModal: boolean = false;
+  requerimientoSeleccionado?: RequerimientoDTO;
   constructor(private service: RequerimientoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe(() => {
       this.mostrarRegistrar = this.router.url.endsWith('/registrar');
@@ -27,7 +28,7 @@ export class RequerimientoComponent implements OnInit {
     this.formulario = this.fb.group({
       id: [null],
       fecha: [''],
-      codDetalleRequerimiento: [null],
+      detalles: [null],
       codUsuario: [null],
       codEstado: [null],
     });
@@ -38,6 +39,7 @@ export class RequerimientoComponent implements OnInit {
   cargarRequerimientos(): void {
     this.service.getAll().subscribe(data => this.requerimientos = data);
   }
+
   irANuevoRequerimiento() {
     this.router.navigate(['/dashboard/logistica/requerimiento/registrar']);
   }
@@ -50,5 +52,13 @@ export class RequerimientoComponent implements OnInit {
 
   eliminar(id: number): void {
     this.service.delete(id).subscribe(() => this.cargarRequerimientos());
+  }
+  verDetalle(r: RequerimientoDTO): void {
+    this.requerimientoSeleccionado = r;
+    this.mostrarModal = true;
+  }
+
+  cerrarModal(): void {
+    this.mostrarModal = false;
   }
 }
