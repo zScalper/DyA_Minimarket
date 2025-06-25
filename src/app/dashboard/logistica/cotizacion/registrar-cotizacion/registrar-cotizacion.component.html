@@ -1,0 +1,39 @@
+<div class="cotizacion-formulario" *ngIf="requerimiento">
+  <h2>Nueva cotización para requerimiento #{{ requerimiento.id }}</h2>
+
+  <label>Fecha de vencimiento:</label>
+  <input type="date" [(ngModel)]="fechaVencimiento" />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Moneda</th>
+        <th>Forma de pago</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of detalles">
+        <td>{{ d.codProducto.nombre }}</td>
+        <td>{{ d.cantidad }}</td>
+        <td>
+          <input type="number" [(ngModel)]="d.precioUnitario" min="0" step="0.01" />
+        </td>
+        <td>
+          <select [(ngModel)]="d.codMoneda.id">
+            <option *ngFor="let m of monedas" [value]="m.id">{{ m.nombre }}</option>
+          </select>
+        </td>
+        <td>
+          <select [(ngModel)]="d.codFormaPago.id">
+            <option *ngFor="let f of formasPago" [value]="f.id">{{ f.formaPago }}</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="guardar()">Registrar cotización</button>
+</div>

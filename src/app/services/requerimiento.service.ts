@@ -19,7 +19,7 @@ export class RequerimientoService {
     return this.http.get<RequerimientoDTO>(`${this.apiUrl}/${id}`);
   }
 
-  create(req: RequerimientoDTO): Observable<RequerimientoDTO> {
+  registrar(req: RequerimientoDTO): Observable<RequerimientoDTO> {
     return this.http.post<RequerimientoDTO>(this.apiUrl, req);
   }
 

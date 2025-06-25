@@ -60,4 +60,12 @@ export class AuthService {
     sessionStorage.removeItem('jwtToken'); // Eliminar token
     this.router.navigate(['/login']); // Redirigir al login
   }
+
+  obtenerId(): number | null {
+  const token = this.obtenerToken();
+  if (!token) return null;
+
+  const decodedToken = this.jwtHelper.decodeToken(token);
+  return decodedToken?.id || null;
+}
 }

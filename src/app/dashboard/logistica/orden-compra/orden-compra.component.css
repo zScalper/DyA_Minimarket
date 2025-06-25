@@ -1,0 +1,254 @@
+:host {
+  --bg: #fff;
+  --bg-table: #f5f6fa;
+  --bg-table-header: #23242a;
+  --text: #23242a;
+  --text-muted: #ffffff;
+  --accent: #fcb830;
+  --accent-hover: #c99a30;
+  --border: #e0e0e0;
+  --hover: #f0f1f5;
+  --danger: #ff6b81;
+  --danger-hover: #b93a4b;
+  --primary: #5b7cff;
+  --primary-hover: #2d6fd6;
+  --btn-text-dark: #23242a;
+  --btn-text-light: #fff;
+}
+
+.ordenCompra-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  animation: fadeIn 0.4s ease-in;
+}
+.ordenCompra-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  animation: fadeIn 0.4s ease-in;
+}
+
+.ordenCompra-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ordenCompra-header h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.ordenCompra-btn-nuevo {
+  background-color: var(--accent);
+  color: var(--btn-text-dark);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ordenCompra-btn-nuevo:hover {
+  background-color: var(--accent-hover);
+  color: var(--btn-text-light);
+}
+
+.ordenCompra-tabla-wrap {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.ordenCompra-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: var(--bg-table);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out;
+}
+
+.ordenCompra-tabla th,
+.ordenCompra-tabla td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.ordenCompra-tabla th {
+  background-color: var(--bg-table-header);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ordenCompra-fila:hover {
+  background-color: var(--hover);
+}
+
+.ordenCompra-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-editar,
+.btn-eliminar,
+.btn-detalle {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.btn-detalle{
+  background-color: var(--btn-text-dark);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-detalle:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+.btn-editar {
+  background-color: var(--primary);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-editar:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.btn-eliminar {
+  background-color: var(--danger);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: var(--danger-hover);
+  transform: scale(1.05);
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: fadeInUp 0.3s ease;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-cerrar:hover {
+  color: #333;
+}
+
+.modal-tabla {
+  width: 100%;
+  margin-top: 1.2rem;
+  border-collapse: collapse;
+}
+
+.modal-tabla th,
+.modal-tabla td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+/* Animaciones suaves */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* Responsive */
+
+@media (max-width: 768px) {
+  .cotizacion-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cotizacion-tabla th,
+  .cotizacion-tabla td {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .btn-editar,
+  .btn-eliminar {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+  .modal-contenido {
+    padding: 1.2rem;
+  }
+
+  .modal-tabla th,
+  .modal-tabla td {
+    font-size: 0.9rem;
+  }
+}

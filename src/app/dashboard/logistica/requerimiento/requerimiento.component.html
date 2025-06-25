@@ -24,8 +24,9 @@
                     <td>{{ r.detalles.length }} producto(s)</td>
                     <td class="requerimiento-acciones">
                         <button class="btn-detalle" (click)="verDetalle(r)">Ver detalles</button>
-                        <button class="btn-editar" (click)="editar(r)">Editar</button>
-                        <button class="btn-eliminar" (click)="eliminar(r.id)">Eliminar</button>
+                        <button class="btn-cotizar" (click)="cotizar(r.id!)">Cotizar</button>
+                        <button class="btn-eliminar" (click)="eliminar(r.id!)">Eliminar</button>
+
                     </td>
                 </tr>
             </tbody>

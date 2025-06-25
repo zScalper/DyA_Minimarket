@@ -18,6 +18,7 @@ import { ListarComponent } from './dashboard/administracion/usuarios/listar/list
 import { AgregarComponent } from './dashboard/administracion/usuarios/agregar/agregar.component';
 import { EditarComponent } from './dashboard/administracion/usuarios/editar/editar.component';
 import { RegistrarComponent } from './dashboard/logistica/requerimiento/registrar/registrar.component';
+import { RegistrarCotizacionComponent } from './dashboard/logistica/cotizacion/registrar-cotizacion/registrar-cotizacion.component';
 // Configuración de rutas en Angular
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -64,7 +65,7 @@ export const routes: Routes = [
                     },
                     {
                         path: 'cotizacion', component: CotizacionComponent, children: [
-                            { path: 'registrar', component: RegistrarComponent }
+                            { path: 'registrar-cotizacion/:id', component: RegistrarCotizacionComponent }
                         ]
                     },
                     { path: 'orden-compra', component: OrdenCompraComponent },

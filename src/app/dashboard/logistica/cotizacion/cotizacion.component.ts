@@ -1,51 +1,57 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { CotizacionDTO } from '../../../models/cotizacion.dto';
+import { Component, OnInit } from '@angular/core';
 import { CotizacionService } from '../../../services/cotizacion.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RegistrarComponent } from './registrar/registrar.component';
+import { CotizacionDTO } from '../../../models/cotizacion.dto';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-cotizacion',
-  imports: [CommonModule, ReactiveFormsModule, RegistrarComponent],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './cotizacion.component.html',
   styleUrl: './cotizacion.component.css'
 })
-export class CotizacionComponent {
+export class CotizacionComponent implements OnInit {
   cotizaciones: CotizacionDTO[] = [];
-  formulario!: FormGroup;
+  mostrarModal = false;
+  cotizacionSeleccionada?: CotizacionDTO;
   mostrarRegistrar = false;
 
-  constructor(private service: CotizacionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
-    this.router.events.subscribe(() => {
-      this.mostrarRegistrar = this.router.url.endsWith('/registrar');
+  constructor(
+    private service: CotizacionService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.firstChild?.params.subscribe(params => {
+      this.mostrarRegistrar = !!params['id'];
     });
   }
 
   ngOnInit(): void {
-    this.formulario = this.fb.group({
-      id: [null],
-      fecha: [''],
-      fechaVencimiento: [''],
-      codRequerimiento: [null],
-      codDetalleCotizacion: [null],
-      codEstado: [null]
-    });
-
     this.cargarCotizaciones();
   }
 
   cargarCotizaciones(): void {
-    this.service.getAll().subscribe(data => this.cotizaciones = data);
+    this.service.getAll().subscribe(data => (this.cotizaciones = data));
   }
+
   irANuevaCotizacion() {
-    this.router.navigate(['/dashboard/logistica/cotizacion/registrar']);
+    this.router.navigate(['/dashboard/logistica/requerimiento']);
   }
+
+  verDetalle(c: CotizacionDTO): void {
+    this.cotizacionSeleccionada = c;
+    this.mostrarModal = true;
+  }
+
   onCancelarRegistrar() {
     this.mostrarRegistrar = false;
   }
-  editar(req: CotizacionDTO): void {
-    this.formulario.setValue(req);
+
+  cerrarModal(): void {
+    this.mostrarModal = false;
   }
 
   eliminar(id: number): void {

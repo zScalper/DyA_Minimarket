@@ -1,5 +1,5 @@
 export interface MonedaDTO {
     id?: number;
-    nombre: string;
-    detalle: string;
+    nombre?: string;
+    detalle?: string;
 }

@@ -1,39 +1,72 @@
 <div class="cotizacion-container" *ngIf="!mostrarRegistrar">
-    <div class="cotizacion-header">
-        <h2>Cotizaciones</h2>
-        <button class="cotizacion-btn-nuevo" (click)="irANuevaCotizacion()">Nueva Cotizacion</button>
-    </div>
-    <div class="cotizacion-tabla-wrap">
-        <table class="cotizacion-tabla">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Fecha</th>
-                    <th>Fecha Venc</th>
-                    <th>Requerimiento</th>
-                    <th>Estado</th>
-                    <th>Detalle</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let c of cotizaciones">
-                    <td>{{ c.id }}</td>
-                    <td>{{ c.fecha }}</td>
-                    <td>{{ c.fechaVencimiento }}</td>
-                    <td>{{ c.codRequerimiento }}</td>
-                    <td>{{ c.codEstado }}</td>
-                    <td>{{ 'c.detalles' }}</td>
-                    <td>
-                        <button (click)="editar(c)">Editar</button>
-                        <button (click)="eliminar(c.id)">Eliminar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="cotizacion-header">
+    <h2>Cotizaciones</h2>
+    <button class="cotizacion-btn-nuevo" (click)="irANuevaCotizacion()">Nueva cotización</button>
+  </div>
+
+  <div class="cotizacion-tabla-wrap">
+    <table class="cotizacion-tabla">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Vencimiento</th>
+          <th>Requerimiento</th>
+          <th>Estado</th>
+          <th>Detalle</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of cotizaciones">
+          <td>{{ c.id }}</td>
+          <td>{{ c.fecha }}</td>
+          <td>{{ c.fechaVencimiento }}</td>
+          <td>#{{ c.codRequerimiento.id }}</td>
+          <td>{{ c.codEstado.estado }}</td>
+          <td>{{ c.detalles.length }} ítem(s)</td>
+          <td class="cotizacion-acciones">
+            <button class="btn-detalle" (click)="verDetalle(c)">Ver detalles</button>
+            <button class="btn-eliminar" (click)="eliminar(c.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<div class="registrar-container" *ngIf="mostrarRegistrar">
-    <app-registrar (cancelar)="onCancelarRegistrar()"></app-registrar>
+<router-outlet></router-outlet>
+
+<div class="modal-overlay" *ngIf="mostrarModal">
+  <div class="modal-contenido">
+    <button class="modal-cerrar" (click)="cerrarModal()">×</button>
+    <h3>Detalles de la cotización #{{ cotizacionSeleccionada?.id }}</h3>
+    <p><strong>Fecha:</strong> {{ cotizacionSeleccionada?.fecha }}</p>
+    <p><strong>Vencimiento:</strong> {{ cotizacionSeleccionada?.fechaVencimiento }}</p>
+    <p><strong>Estado:</strong> {{ cotizacionSeleccionada?.codEstado?.estado }}</p>
+    <p><strong>Requerimiento:</strong> #{{ cotizacionSeleccionada?.codRequerimiento?.id }}</p>
+
+    <table class="modal-tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>SKU</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Moneda</th>
+          <th>Forma de pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of cotizacionSeleccionada?.detalles">
+          <td>{{ d.codProducto.nombre }}</td>
+          <td>{{ d.codProducto.sku }}</td>
+          <td>{{ d.cantidad }}</td>
+          <td>{{ d.precioUnitario }}</td>
+          <td>{{ d.codMoneda.nombre }}</td>
+          <td>{{ d.codFormaPago.formaPago || "-"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

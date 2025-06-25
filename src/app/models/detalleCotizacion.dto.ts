@@ -3,10 +3,10 @@ import { MonedaDTO } from './moneda.dto';
 import { ProductoDTO } from './producto.dto';
 
 export interface DetalleCotizacionDTO {
-    id?: number;
-    codProducto: ProductoDTO;
-    cantidad: number;
-    precio: number;
-    codFormaPago: FormaPagoDTO;
-    codMoneda: MonedaDTO;
+  id?: number;
+  cantidad: number;
+  precioUnitario: number;
+  codProducto: ProductoDTO;
+  codMoneda: MonedaDTO;
+  codFormaPago: FormaPagoDTO;
 }

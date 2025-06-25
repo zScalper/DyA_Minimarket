@@ -1,1 +1,64 @@
-<p>orden-compra works!</p>
+<div class="ordenCompra-container">
+  <div class="ordenCompra-header">
+    <h2>Órdenes de Compra</h2>
+  </div>
+
+  <div class="ordenCompra-tabla-wrap">
+    <table class="ordenCompra-tabla">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Monto Total</th>
+          <th>Cotización</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of ordenes">
+          <td>{{ o.id }}</td>
+          <td>{{ o.fecha }}</td>
+          <td>S/ {{ o.montoTotal | number: '1.2-2' }}</td>
+          <td>#{{ o.codCotizacion.id }}</td>
+          <td class="ordenCompra-acciones">
+            <button class="btn-detalle" (click)="verDetalle(o)">Ver detalles</button>
+            <button class="btn-eliminar" (click)="eliminar(o.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="mostrarModal">
+  <div class="modal-contenido">
+    <button class="modal-cerrar" (click)="cerrarModal()">×</button>
+    <h3>Orden #{{ ordenSeleccionada?.id }}</h3>
+    <p><strong>Fecha:</strong> {{ ordenSeleccionada?.fecha }}</p>
+    <p><strong>Monto total:</strong> S/ {{ ordenSeleccionada?.montoTotal | number: '1.2-2' }}</p>
+    <p><strong>Cotización asociada:</strong> #{{ ordenSeleccionada?.codCotizacion?.id }}</p>
+
+    <table class="modal-tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>SKU</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Moneda</th>
+          <th>Forma de pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of ordenSeleccionada?.codCotizacion?.detalles">
+          <td>{{ d.codProducto.nombre }}</td>
+          <td>{{ d.codProducto.sku || '-' }}</td>
+          <td>{{ d.cantidad }}</td>
+          <td>{{ d.precioUnitario }}</td>
+          <td>{{ d.codMoneda.nombre }}</td>
+          <td>{{ d.codFormaPago.formaPago || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

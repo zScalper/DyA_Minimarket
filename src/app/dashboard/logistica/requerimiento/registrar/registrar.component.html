@@ -1,53 +1,41 @@
 <section class="agregar-requerimiento-container">
-  <form [formGroup]="formulario" (ngSubmit)="guardar()" novalidate class="formulario-requerimiento">
-    <h2>Registrar Requerimiento</h2>
+  <form [formGroup]="detalleForm" (ngSubmit)="agregarDetalle()" novalidate class="formulario-requerimiento">
+    <h2>Registrar nuevo Requerimiento</h2>
+
 
     <div class="grupo-formulario">
-      <label for="fecha">Fecha</label>
-      <input id="fecha" formControlName="fecha" type="date" />
-      <span class="mensaje-error" *ngIf="formulario.get('fecha')?.touched && formulario.get('fecha')?.invalid">
-        * La fecha es obligatoria
-      </span>
+      <label for="sku">SKU:</label>
+      <input id="sku" formControlName="sku" />
+      <span class="mensaje-error" *ngIf="skuError">{{ skuError }}</span>
+
+      <label for="cantidad">Cantidad:</label>
+      <input id="cantidad" type="number" formControlName="cantidad" />
+
+      <button type="submit" [disabled]="detalleForm.invalid">Agregar producto</button>
     </div>
 
-    <div class="grupo-formulario">
-      <label for="codUsuario">ID Usuario</label>
-      <input id="codUsuario" formControlName="codUsuario" type="number" placeholder="ID Usuario" />
-      <label for="codEstado">ID Estado</label>
-      <input id="codEstado" formControlName="codEstado" type="number" placeholder="ID Estado" />
-    </div>
-    <div class="grupo-formulario">
-      <span class="mensaje-error" *ngIf="formulario.get('codUsuario')?.touched && formulario.get('codUsuario')?.invalid">
-      * El usuario es obligatorio
-    </span>
-    <span class="mensaje-error" *ngIf="formulario.get('codEstado')?.touched && formulario.get('codEstado')?.invalid">
-      * El estado es obligatorio
-    </span>
-    </div>
-    <div formArrayName="detalles">
-      <div *ngFor="let detalle of detalles.controls; let i = index" [formGroupName]="i" class="detalle-producto">
-        <div class="grupo-formulario">
-          <label>Producto</label>
-          <input type="number" formControlName="codProducto" placeholder="ID Producto" />
-          <label>Cantidad</label>
-          <input type="number" formControlName="cantidad" placeholder="Cantidad"/>
-          <button type="button" (click)="eliminarDetalle(i)">Eliminar</button>
-        </div>
-        <div class="grupo-formulario">
-          <span class="mensaje-error"
-            *ngIf="detalle.get('codProducto')?.touched && detalle.get('codProducto')?.invalid">
-            * El producto es obligatorio
-          </span>
-          <span class="mensaje-error" *ngIf="detalle.get('cantidad')?.touched && detalle.get('cantidad')?.invalid">
-            * La cantidad es obligatoria y debe ser mayor a 0
-          </span>
-        </div>
+    <div *ngIf="detalles.length > 0" class="tabla-detalles">
+      <h3>Productos agregados:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of detalles">
+            <td>{{ d.codProducto.sku }}</td>
+            <td>{{ d.codProducto.nombre }}</td>
+            <td>{{ d.cantidad }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="formulario-botones">
+        <button (click)="guardar()">Guardar requerimiento</button>
+        <button (click)="cancelarRegistro()">Cancelar</button>
       </div>
-    </div>
-    <div class="formulario-botones">
-      <button type="button" [disabled]="detalles.invalid" (click)="agregarDetalle()">Agregar producto</button>
-      <button type="submit" [disabled]="formulario.invalid">Guardar Requerimiento</button>
-      <button type="button" class="btn-cancelar" (click)="cancelar.emit()">Cancelar</button>
     </div>
   </form>
 </section>

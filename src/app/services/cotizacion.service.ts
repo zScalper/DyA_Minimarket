@@ -19,15 +19,15 @@ export class CotizacionService {
     return this.http.get<CotizacionDTO>(`${this.apiUrl}/${id}`);
   }
 
-  create(req: CotizacionDTO): Observable<CotizacionDTO> {
-    return this.http.post<CotizacionDTO>(this.apiUrl, req);
+  registrar(dto: CotizacionDTO): Observable<CotizacionDTO> {
+    return this.http.post<CotizacionDTO>(this.apiUrl, dto);
   }
 
-  update(id: number, req: CotizacionDTO): Observable<CotizacionDTO> {
-    return this.http.put<CotizacionDTO>(`${this.apiUrl}/${id}`, req);
+  actualizar(id: number, dto: CotizacionDTO): Observable<CotizacionDTO> {
+    return this.http.put<CotizacionDTO>(`${this.apiUrl}/${id}`, dto);
   }
 
-  delete(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

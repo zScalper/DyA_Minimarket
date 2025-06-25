@@ -25,7 +25,6 @@
 }
 
 .formulario-requerimiento {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -40,10 +39,8 @@
 
 .grupo-formulario {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .grupo-formulario label {

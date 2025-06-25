@@ -21,14 +21,14 @@ export class SidebarComponent implements OnInit {
     this.usuarioRol = this.authService.obtenerRol(); // Obtener el rol desde el token o servicio
   }
   puedeVerAdministracion(): boolean {
-    return this.usuarioRol === 'ADMINISTRADOR';
+    return this.usuarioRol === 'Administrador';
   }
   puedeVerLogistica(): boolean {
-    return this.usuarioRol === 'ADMINISTRADOR' || this.usuarioRol === 'LOGISTICA';
+    return this.usuarioRol === 'Administrador' || this.usuarioRol === 'Logistica';
   }
 
   puedeVerAlmacen(): boolean {
-    return this.usuarioRol === 'ADMINISTRADOR' || this.usuarioRol === 'LOGISTICA' || this.usuarioRol === 'ALMACENERO';
+    return this.usuarioRol === 'Administrador' || this.usuarioRol === 'Logistica' || this.usuarioRol === 'Almacenero';
   }
   
   // Controla el estado de los submenús dentro del sidebar

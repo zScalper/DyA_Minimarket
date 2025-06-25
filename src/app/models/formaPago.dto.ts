@@ -1,5 +1,5 @@
 export interface FormaPagoDTO {
     id?: number;
-    nombre: string;
-    detalle: string;
+    formaPago?: string;
+    detalle?: string;
 }

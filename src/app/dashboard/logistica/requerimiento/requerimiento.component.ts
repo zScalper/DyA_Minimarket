@@ -50,6 +50,10 @@ export class RequerimientoComponent implements OnInit {
     this.formulario.setValue(req);
   }
 
+  cotizar(id: number): void {
+    this.router.navigate(['/dashboard/logistica/cotizacion/registrar-cotizacion', id]);
+  }
+
   eliminar(id: number): void {
     this.service.delete(id).subscribe(() => this.cargarRequerimientos());
   }
