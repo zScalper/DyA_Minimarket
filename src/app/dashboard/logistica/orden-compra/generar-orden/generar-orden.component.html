@@ -1,0 +1,45 @@
+<div class="cotizacion-container">
+  <div class="cotizacion-header">
+    <h2>Generar Orden de Compra</h2>
+    <p *ngIf="cotizacion">Desde Cotización #{{ cotizacion.id }}</p>
+  </div>
+
+  <div class="cotizacion-tabla-wrap" *ngIf="detallesSeleccionados.length > 0">
+    <table class="cotizacion-tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>SKU</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Subtotal</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of detallesSeleccionados; index as i">
+          <td>{{ d.codProducto.nombre }}</td>
+          <td>{{ d.codProducto.sku || '-' }}</td>
+          <td>{{ d.cantidad }}</td>
+          <td>S/ {{ d.precioUnitario }}</td>
+          <td>S/ {{ d.precioUnitario * d.cantidad | number: '1.2-2' }}</td>
+          <td>
+            <button class="btn-eliminar" (click)="quitarDetalle(i)">Quitar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="detallesSeleccionados.length === 0">
+    <p>No hay detalles seleccionados. Todos han sido removidos.</p>
+  </div>
+
+  <div style="margin-top: 1rem; font-size: 1.1rem; font-weight: 600;">
+    <label>Monto total:</label> S/ {{ montoTotal | number: '1.2-2' }}
+  </div>
+
+  <button (click)="generarOrden()" [disabled]="detallesSeleccionados.length === 0" style="margin-top: 1.5rem;">
+    Generar orden de compra
+  </button>
+</div>

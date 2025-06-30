@@ -27,6 +27,7 @@
           <td>{{ c.detalles.length }} ítem(s)</td>
           <td class="cotizacion-acciones">
             <button class="btn-detalle" (click)="verDetalle(c)">Ver detalles</button>
+            <button class="btn-ordenar" (click)="generarOrden(c.id!)">Ordenar</button>
             <button class="btn-eliminar" (click)="eliminar(c.id!)">Eliminar</button>
           </td>
         </tr>

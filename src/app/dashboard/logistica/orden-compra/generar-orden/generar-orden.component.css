@@ -1,0 +1,121 @@
+:host {
+  --bg: #fff;
+  --bg-table: #f5f6fa;
+  --bg-table-header: #23242a;
+  --text: #23242a;
+  --text-muted: #ffffff;
+  --accent: #fcb830;
+  --accent-hover: #c99a30;
+  --border: #e0e0e0;
+  --hover: #f0f1f5;
+  --danger: #ff6b81;
+  --danger-hover: #b93a4b;
+  --btn-text-dark: #23242a;
+  --btn-text-light: #fff;
+}
+
+.cotizacion-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.06);
+  animation: fadeIn 0.4s ease-in;
+}
+
+.cotizacion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cotizacion-tabla-wrap {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.cotizacion-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: var(--bg-table);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out;
+}
+
+.cotizacion-tabla th,
+.cotizacion-tabla td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.cotizacion-tabla th {
+  background-color: var(--bg-table-header);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.btn-eliminar {
+  background-color: var(--danger);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: var(--danger-hover);
+}
+
+button[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+button {
+  background-color: var(--accent);
+  color: var(--btn-text-dark);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+  color: var(--btn-text-light);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .cotizacion-tabla th,
+  .cotizacion-tabla td {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

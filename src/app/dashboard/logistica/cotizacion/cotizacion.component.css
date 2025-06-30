@@ -48,8 +48,8 @@
 }
 
 .cotizacion-btn-nuevo {
-  background-color: var(--accent);
-  color: var(--btn-text-dark);
+  background-color: var(--btn-text-dark);
+  color: var(--btn-text-light);
   font-weight: 600;
   padding: 0.6rem 1rem;
   border-radius: 6px;
@@ -61,7 +61,8 @@
 
 .cotizacion-btn-nuevo:hover {
   background-color: var(--accent-hover);
-  color: var(--btn-text-light);
+  color: var(--text);
+  transform: scale(1.05);
 }
 
 .cotizacion-tabla-wrap {
@@ -106,7 +107,8 @@
 
 .btn-editar,
 .btn-eliminar,
-.btn-detalle {
+.btn-detalle,
+.btn-ordenar {
   padding: 0.4rem 0.8rem;
   border: none;
   border-radius: 4px;
@@ -122,6 +124,17 @@
   transition: background 0.2s, transform 0.2s;
 }
 .btn-detalle:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+.btn-ordenar{
+  background-color: var(--btn-text-dark);
+  color: var(--btn-text-light);
+  border: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-ordenar:hover {
   background-color: var(--accent-hover);
   transform: scale(1.05);
 }

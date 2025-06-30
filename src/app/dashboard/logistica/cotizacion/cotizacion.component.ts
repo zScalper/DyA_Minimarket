@@ -46,6 +46,11 @@ export class CotizacionComponent implements OnInit {
     this.mostrarModal = true;
   }
 
+  generarOrden(id: number): void {
+this.router.navigate(['/dashboard/logistica/generar-orden-compra', id]);
+  }
+
+
   onCancelarRegistrar() {
     this.mostrarRegistrar = false;
   }

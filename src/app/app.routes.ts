@@ -19,6 +19,7 @@ import { AgregarComponent } from './dashboard/administracion/usuarios/agregar/ag
 import { EditarComponent } from './dashboard/administracion/usuarios/editar/editar.component';
 import { RegistrarComponent } from './dashboard/logistica/requerimiento/registrar/registrar.component';
 import { RegistrarCotizacionComponent } from './dashboard/logistica/cotizacion/registrar-cotizacion/registrar-cotizacion.component';
+import { GenerarOrdenComponent } from './dashboard/logistica/orden-compra/generar-orden/generar-orden.component';
 // Configuración de rutas en Angular
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -69,6 +70,8 @@ export const routes: Routes = [
                         ]
                     },
                     { path: 'orden-compra', component: OrdenCompraComponent },
+                    { path: 'generar-orden-compra/:id', component: GenerarOrdenComponent }
+                    ,
                     { path: 'despacho', component: DespachoComponent }
                 ]
             }

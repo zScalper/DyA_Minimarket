@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { OrdenCompraDTO } from '../../../models/ordenCompra.dto';
 import { OrdenCompraService } from '../../../services/orden-compra.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-orden-compra',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './orden-compra.component.html',
   styleUrls: ['./orden-compra.component.css']
 })
