@@ -3,11 +3,11 @@ import { EstadoDTO } from "./estado.dto";
 import { ProveedorDTO } from "./proveedor.dto";
 import { UnidadDTO } from "./unidad.dto";
 export interface ProductoDTO {
-  id: number;
+  id?: number;
   nombre: string;
   cantidad: number;
   precio: number;
-  sku: string | null;
+  sku: string;
   codCategoria: CategoriaDTO;
   codUnidad: UnidadDTO;
   codEstado: EstadoDTO;

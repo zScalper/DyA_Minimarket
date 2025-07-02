@@ -39,7 +39,7 @@ export class RegistrarComponent {
     this.skuError = '';
     const { sku, cantidad } = this.detalleForm.value;
 
-    this.productoService.obtenerPorSku(sku).subscribe({
+    this.productoService.getBySku(sku).subscribe({
       next: (producto: ProductoDTO) => {
         const nuevoDetalle: DetalleRequerimientoDTO = {
           cantidad,

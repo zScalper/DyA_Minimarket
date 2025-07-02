@@ -1,1 +1,40 @@
-<p>inventario works!</p>
+<div class="cotizacion-container">
+  <div class="cotizacion-header">
+    <h2>Inventario de Productos</h2>
+    <input type="text" [(ngModel)]="filtro" (input)="aplicarFiltro()"
+      placeholder="🔍 Buscar por nombre, SKU o categoría..." />
+  </div>
+
+  <div class="cotizacion-tabla-wrap">
+    <table class="cotizacion-tabla">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Producto</th>
+          <th>Categoría</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Proveedor</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productosFiltrados">
+          <td>{{ p.sku }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.codCategoria.nombreCategoria}}</td>
+          <td>{{ p.codUnidad.unidad }}</td>
+          <td>{{ p.cantidad }}</td>
+          <td>S/ {{ p.precio | number: '1.2-2' }}</td>
+          <td>{{ p.codProveedor.razonSocial }}</td>
+          <td>
+            <span [ngClass]="obtenerClaseEstado(p.codEstado.estado ?? '')">
+              {{ p.codEstado.estado }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

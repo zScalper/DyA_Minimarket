@@ -7,19 +7,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:8080/productos'; // Ajusta si tu ruta cambia
+  private apiUrl = 'http://localhost:8080/productos';
 
   constructor(private http: HttpClient) {}
 
-  listar(): Observable<ProductoDTO[]> {
+  getAll(): Observable<ProductoDTO[]> {
     return this.http.get<ProductoDTO[]>(this.apiUrl);
   }
 
-  obtenerPorId(id: number): Observable<ProductoDTO> {
+  getById(id: number): Observable<ProductoDTO> {
     return this.http.get<ProductoDTO>(`${this.apiUrl}/${id}`);
   }
 
-  obtenerPorSku(sku: string): Observable<ProductoDTO> {
+  getBySku(sku: string): Observable<ProductoDTO> {
     return this.http.get<ProductoDTO>(`${this.apiUrl}/sku/${sku}`);
   }
 
@@ -27,7 +27,7 @@ export class ProductoService {
     return this.http.post<ProductoDTO>(this.apiUrl, producto);
   }
 
-  editar(id: number, producto: ProductoDTO): Observable<ProductoDTO> {
+  actualizar(id: number, producto: ProductoDTO): Observable<ProductoDTO> {
     return this.http.put<ProductoDTO>(`${this.apiUrl}/${id}`, producto);
   }
 

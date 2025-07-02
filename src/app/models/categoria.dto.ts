@@ -1,5 +1,5 @@
 export interface CategoriaDTO {
   id?: number;
-  categoria: string;
+  nombreCategoria: string;
   detalleCategoria: string;
 }
