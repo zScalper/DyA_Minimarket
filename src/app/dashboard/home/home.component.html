@@ -1,29 +1,68 @@
-<div class="home-container">
-  <h2>Dashboard Principal</h2>
-  
-  <div class="stats-grid">
-    <div class="stat-box">
-      <h3>Inventario</h3>
-      <p>Productos registrados: <strong>1,245</strong></p>
-    </div>
-    <div class="stat-box">
-      <h3>Órdenes de Compra</h3>
-      <p>Pendientes: <strong>12</strong></p>
-    </div>
-    <div class="stat-box">
-      <h3>Usuarios Activos</h3>
-      <p>Total: <strong>32</strong></p>
-    </div>
-  </div>
+<section class="home-container">
+  <h2>Bienvenido al sistema de gestión DyA Minimarket</h2>
 
-  <div class="charts">
-    <h3>Resumen Gráfico</h3>
-    <!-- Aquí irán los gráficos con Angular Charts o Chart.js -->
+  <!-- Panel resumen -->
+  <div class="resumen-metricas">
+    <div class="card-metrica">
+      <h3>{{ totalUsuarios }}</h3>
+      <p>Usuarios</p>
+    </div>
+    <div class="card-metrica">
+      <h3>{{ totalProveedores }}</h3>
+      <p>Proveedores</p>
+    </div>
+    <div class="card-metrica">
+      <h3>{{ totalProductos }}</h3>
+      <p>Productos</p>
+    </div>
+    <div class="card-metrica">
+      <h3>{{ totalDespachos }}</h3>
+      <p>Despachos</p>
+    </div>
   </div>
-
-  <div class="quick-access">
-    <h3>Accesos Rápidos</h3>
-    <button routerLink="/dashboard/inventario">Ver Inventario</button>
-    <button routerLink="/dashboard/orden-compra">Órdenes de Compra</button>
-  </div>
+  <div class="tabla-mas-vendidos">
+  <h3>📦 Productos más vendidos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Nombre</th>
+        <th>Stock</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of productosMasVendidos">
+        <td>{{ p.sku }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.cantidad }}</td>
+        <td>
+            <span [ngClass]="obtenerClaseEstado(p.codEstado.estado ?? '')">
+              {{ p.codEstado.estado }}
+            </span>
+          </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+  <!-- Gráficos -->
+  <div class="graficos-container">
+    <google-chart
+      [type]="chartDespachos.type"
+      [data]="chartDespachos.data"
+      [options]="chartDespachos.options"
+      [width]="chartDespachos.width"
+      [height]="chartDespachos.height">
+    </google-chart>
+
+    <google-chart
+      [type]="chartProductos.type"
+      [data]="chartProductos.data"
+      [options]="chartProductos.options"
+      [width]="chartProductos.width"
+      [height]="chartProductos.height">
+    </google-chart>
+  </div>
+</section>
+

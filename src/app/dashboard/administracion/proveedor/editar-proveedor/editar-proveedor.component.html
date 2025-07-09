@@ -1,0 +1,41 @@
+<section class="agregar-proveedor-container">
+    <form [formGroup]="proveedorForm" (ngSubmit)="actualizar()" novalidate class="formulario-proveedor">
+        <h2>Editar Proveedor</h2>
+        <div class="grupo-formulario">
+            <label for="ruc">RUC</label>
+            <input id="ruc" type="text" formControlName="ruc" placeholder="Escribe el RUC" />
+            <span class="mensaje-error"
+                *ngIf="proveedorForm.get('ruc')?.touched && proveedorForm.get('ruc')?.invalid">
+                * El RUC es obligatorio
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="razonSocial">Razón social</label>
+            <input id="razonSocial" type="text" formControlName="razonSocial" placeholder="Escribe el apellido" />
+            <span class="mensaje-error"
+                *ngIf="proveedorForm.get('razonSocial')?.touched && proveedorForm.get('razonSocial')?.invalid">
+                * La Razón social es obligatorio
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="direccion">Dirección</label>
+            <input id="direccion" type="text" formControlName="direccion" placeholder="Escribe la direccion" />
+            <span class="mensaje-error"
+                *ngIf="proveedorForm.get('direccion')?.touched && proveedorForm.get('direccion')?.invalid">
+                * La dirección es obligatoria
+            </span>
+        </div>
+        <div class="grupo-formulario">
+            <label for="codTipo">Tipo</label>
+            <select id="codTipo" formControlName="codTipo">
+                <option [ngValue]="null" disabled>Seleccione un tipo</option>
+                <option *ngFor="let r of tipoProveedor" [ngValue]="r">{{ r.nombre }}</option>
+            </select>
+            <span class="mensaje-error" *ngIf="proveedorForm.get('codTipo')?.touched && proveedorForm.get('codTipo')?.invalid">
+                * Debe seleccionar un tipo
+            </span>
+        </div>
+        <button type="submit" [disabled]="proveedorForm.invalid">Actualizar</button>
+    </form>
+</section>
+

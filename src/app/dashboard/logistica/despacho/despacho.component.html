@@ -1,1 +1,61 @@
-<p>despacho works!</p>
+<div class="despacho-container">
+    <div class="despacho-header">
+        <h2>Despachos registrados</h2>
+        <button class="despacho-btn-nuevo" (click)="irANuevoDespacho()">Nuevo Despacho</button>
+    </div>
+
+    <div class="despacho-tabla-wrap">
+        <table class="despacho-tabla">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tienda</th>
+                    <th>Encargado</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let despacho of despachos">
+                    <td>{{ despacho.fecha }}</td>
+                    <td>{{ despacho.codTienda.nombre }}</td>
+                    <td>{{ despacho.codUsuario?.nombre+" "+despacho.codUsuario?.apellido }}</td>
+                    <td>{{ despacho.codEstado.estado }}</td>
+                    <td class="despacho-acciones">
+                        <button class="btn-detalle" (click)="verDetalle(despacho)">Ver detalles</button>
+                        <button class="btn-eliminar" (click)="eliminarDespacho(despacho.id!)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="modal-overlay" *ngIf="mostrarModal">
+  <div class="modal-contenido">
+    <button class="modal-cerrar" (click)="cerrarModal()">×</button>
+    <h3>Detalles del despacho #{{ despachoSeleccionado?.id }}</h3>
+    <p><strong>Fecha:</strong> {{ despachoSeleccionado?.fecha }}</p>
+    <p><strong>Estado:</strong> {{ despachoSeleccionado?.codEstado?.estado }}</p>
+    <p><strong>Usuario:</strong> {{ despachoSeleccionado?.codUsuario?.nombre }} {{ despachoSeleccionado?.codUsuario?.apellido }}</p>
+
+    <table class="modal-tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad solicitada</th>
+          <th>SKU</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of despachoSeleccionado?.detalles">
+          <td>{{ d.codProducto.nombre }}</td>
+          <td>{{ d.cantidad }}</td>
+          <td>{{ d.codProducto.sku || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

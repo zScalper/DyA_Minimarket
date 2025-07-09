@@ -1,0 +1,137 @@
+:host {
+  --bg: #ffffff;
+  --text: #23242a;
+  --border: #e0e0e0;
+  --input-bg: #fefefe;
+  --accent: #fcb830;
+  --accent-hover: #c99a30;
+  --danger: #ff6b81;
+  --danger-hover: #b93a4b;
+  --btn-text-light: #ffffff;
+}
+
+/* Contenedor */
+.formulario-despacho-container {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Título */
+.formulario-despacho-container h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Estructura del formulario */
+.formulario-despacho {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Grupo de campos */
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo-formulario label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+/* Inputs y selects */
+.grupo-formulario input,
+.grupo-formulario select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--input-bg);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Mensajes de error */
+.mensaje-error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+/* Botones */
+.botones-formulario {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+}
+
+button[type="submit"] {
+  background-color: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--accent-hover);
+  color: var(--btn-text-light);
+}
+
+.btn-eliminar {
+  background-color: var(--danger);
+  color: var(--btn-text-light);
+  font-weight: 600;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn-eliminar:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formulario-despacho-container {
+    padding: 1rem;
+  }
+
+  .formulario-despacho-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .botones-formulario {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

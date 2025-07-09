@@ -6,22 +6,22 @@
     <table class="usuarios-tabla">
       <thead>
         <tr>
+          <th>DNI</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Teléfono</th>
           <th>Email</th>
-          <th>DNI</th>
           <th>Rol</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let usuario of usuarios" class="usuarios-fila">
+          <td>{{ usuario.dni }}</td>
           <td>{{ usuario.nombre }}</td>
           <td>{{ usuario.apellido }}</td>
           <td>{{ usuario.telefono }}</td>
           <td>{{ usuario.email }}</td>
-          <td>{{ usuario.dni }}</td>
           <td>{{ usuario.rol?.nombre }}</td>
           <td class="usuarios-acciones">
             <button class="btn-editar" (click)="editarUsuario(usuario.id!)">Editar</button>

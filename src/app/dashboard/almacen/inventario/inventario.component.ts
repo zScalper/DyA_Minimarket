@@ -13,9 +13,11 @@ import { CommonModule } from '@angular/common';
 export class InventarioComponent implements OnInit {
   productos: ProductoDTO[] = [];
   productosFiltrados: ProductoDTO[] = [];
-
   filtro = '';
-
+  paginaActual = 1;
+  productosPorPagina = 10;
+  productoEncontrado?: ProductoDTO;
+mostrarModal = false;
   constructor(private productoService: ProductoService) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class InventarioComponent implements OnInit {
       case 'activo': return 'estado-verde';
       case 'quiebre': return 'estado-rojo';
       case 'más vendido': return 'estado-morado';
-      default: return 'estado-indefinido'; 
+      default: return 'estado-indefinido';
     }
   }
 
@@ -47,5 +49,30 @@ export class InventarioComponent implements OnInit {
       p.sku.toLowerCase().includes(filtro) ||
       p.codCategoria?.nombreCategoria.toLowerCase().includes(filtro)
     );
+  }
+  buscarProducto(): void {
+  const criterio = this.filtro.toLowerCase().trim();
+  const encontrado = this.productos.find(p =>
+    p.sku.toLowerCase() === criterio || p.nombre.toLowerCase().includes(criterio)
+  );
+
+  if (encontrado) {
+    this.productoEncontrado = encontrado;
+    this.mostrarModal = true;
+  } else {
+    alert('Producto no encontrado.');
+  }
+}
+  get productosPaginados(): ProductoDTO[] {
+    const start = (this.paginaActual - 1) * this.productosPorPagina;
+    return this.productosFiltrados.slice(start, start + this.productosPorPagina);
+  }
+
+  totalPaginas(): number {
+    return Math.ceil(this.productosFiltrados.length / this.productosPorPagina);
+  }
+
+  cambiarPagina(p: number): void {
+    this.paginaActual = p;
   }
 }

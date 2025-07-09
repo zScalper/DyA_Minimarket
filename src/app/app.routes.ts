@@ -8,8 +8,7 @@ import { LogisticaComponent } from './dashboard/logistica/logistica.component';
 import { InventarioComponent } from './dashboard/almacen/inventario/inventario.component';
 import { IngresoProductoComponent } from './dashboard/almacen/ingreso-producto/ingreso-producto.component';
 import { UsuariosComponent } from './dashboard/administracion/usuarios/usuarios.component';
-import { TipoProveedorComponent } from './dashboard/administracion/tipo-proveedor/tipo-proveedor.component';
-import { RequerimientoComponent } from './dashboard/logistica/requerimiento/requerimiento.component';
+import { ProveedorComponent } from './dashboard/administracion/proveedor/proveedor.component';
 import { CotizacionComponent } from './dashboard/logistica/cotizacion/cotizacion.component';
 import { OrdenCompraComponent } from './dashboard/logistica/orden-compra/orden-compra.component';
 import { DespachoComponent } from './dashboard/logistica/despacho/despacho.component';
@@ -20,6 +19,12 @@ import { EditarComponent } from './dashboard/administracion/usuarios/editar/edit
 import { RegistrarComponent } from './dashboard/logistica/requerimiento/registrar/registrar.component';
 import { RegistrarCotizacionComponent } from './dashboard/logistica/cotizacion/registrar-cotizacion/registrar-cotizacion.component';
 import { GenerarOrdenComponent } from './dashboard/logistica/orden-compra/generar-orden/generar-orden.component';
+import { RequerimientoComponent } from './dashboard/logistica/requerimiento/requerimiento.component';
+import { EditarProveedorComponent } from './dashboard/administracion/proveedor/editar-proveedor/editar-proveedor.component';
+import { NuevoComponent } from './dashboard/administracion/proveedor/nuevo/nuevo.component';
+import { NuevoDespachoComponent } from './dashboard/logistica/despacho/nuevo-despacho/nuevo-despacho.component';
+import { EditarDespachoComponent } from './dashboard/logistica/despacho/editar-despacho/editar-despacho.component';
+
 // Configuración de rutas en Angular
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -52,7 +57,9 @@ export const routes: Routes = [
                             { path: 'editar/:id', component: EditarComponent }
                         ]
                     },
-                    { path: 'tipo-proveedor', component: TipoProveedorComponent }
+                    { path: 'proveedores', component: ProveedorComponent },
+                    { path: 'editar-proveedor/:id', component: EditarProveedorComponent },
+                    { path: 'nuevo-proveedor', component: NuevoComponent}
                 ]
             },
 
@@ -72,7 +79,9 @@ export const routes: Routes = [
                     { path: 'orden-compra', component: OrdenCompraComponent },
                     { path: 'generar-orden-compra/:id', component: GenerarOrdenComponent }
                     ,
-                    { path: 'despacho', component: DespachoComponent }
+                    { path: 'despacho', component: DespachoComponent },
+                    { path: 'editar-despacho/:id', component: EditarDespachoComponent },
+                    { path: 'nuevo-despacho', component: NuevoDespachoComponent}
                 ]
             }
         ]

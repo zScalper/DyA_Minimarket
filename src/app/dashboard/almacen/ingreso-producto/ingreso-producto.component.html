@@ -1,1 +1,97 @@
-<p>ingreso-producto works!</p>
+<div class="cotizacion-container">
+    <div class="cotizacion-header">
+        <h2>Registrar nuevo producto</h2>
+    </div>
+
+    <form #productoForm="ngForm" class="cotizacion-formulario" (ngSubmit)="guardar()" novalidate>
+        <!-- Nombre -->
+        <div>
+            <label>Nombre:</label>
+            <input type="text" name="nombre" [(ngModel)]="producto.nombre" required minlength="3"
+                #nombreRef="ngModel" />
+            <span class="error" *ngIf="nombreRef.invalid && nombreRef.touched">
+                Nombre obligatorio (mínimo 3 caracteres).
+            </span>
+        </div>
+
+        <!-- SKU -->
+        <div>
+            <label>SKU:</label>
+            <input type="text" name="sku" [(ngModel)]="producto.sku" required maxlength="20" #skuRef="ngModel" />
+            <span class="error" *ngIf="skuRef.invalid && skuRef.touched">
+                SKU obligatorio (máx. 20 caracteres).
+            </span>
+        </div>
+
+        <!-- Cantidad -->
+        <div>
+            <label>Cantidad:</label>
+            <input type="number" name="cantidad" [(ngModel)]="producto.cantidad" min="0" required #cantRef="ngModel" />
+            <span class="error" *ngIf="cantRef.invalid && cantRef.touched">
+                Cantidad inválida.
+            </span>
+        </div>
+
+        <!-- Precio -->
+        <div>
+            <label>Precio (S/):</label>
+            <input type="number" name="precio" [(ngModel)]="producto.precio" min="0" step="0.01" required
+                #precioRef="ngModel" />
+            <span class="error" *ngIf="precioRef.invalid && precioRef.touched">
+                Precio inválido.
+            </span>
+        </div>
+
+        <!-- Categoría -->
+        <div>
+            <label>Categoría:</label>
+            <select name="categoria" [(ngModel)]="producto.codCategoria.id" required #categoriaRef="ngModel">
+                <option [ngValue]="undefined" disabled selected>Seleccione categoría</option>
+                <option *ngFor="let c of categorias" [ngValue]="c.id">{{ c.nombreCategoria }}</option>
+            </select>
+            <span class="error" *ngIf="categoriaRef.invalid && categoriaRef.touched">
+                Categoría obligatoria.
+            </span>
+        </div>
+
+        <!-- Unidad -->
+        <div>
+            <label>Unidad:</label>
+            <select [(ngModel)]="producto.codUnidad.id" name="unidad">
+                <option [ngValue]="undefined" disabled selected>Seleccione unidad</option>
+                <option *ngFor="let u of unidades" [ngValue]="u.id">
+                    {{ u.unidad }}
+                </option>
+            </select>
+        </div>
+
+        <!-- Estado -->
+        <div>
+            <label>Estado:</label>
+            <select [(ngModel)]="producto.codEstado.id" name="estado">
+                <option [ngValue]="undefined" disabled selected>Seleccione estado</option>
+                <option *ngFor="let e of estados" [ngValue]="e.id">
+                    {{ e.estado }}
+                </option>
+            </select>
+        </div>
+
+        <!-- Proveedor -->
+        <div>
+            <label>Proveedor:</label>
+            <select [(ngModel)]="producto.codProveedor.id" name="proveedor">
+                <option [ngValue]="undefined" disabled selected>Seleccione proveedor</option>
+                <option *ngFor="let p of proveedores" [ngValue]="p.id">
+                    {{ p.razonSocial }}
+                </option>
+            </select>
+        </div>
+
+
+        <!-- Botones -->
+        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <button type="submit" [disabled]="productoForm.invalid">Guardar producto</button>
+            <button type="button" class="btn-eliminar" (click)="cancelar()">Cancelar</button>
+        </div>
+    </form>
+</div>

@@ -16,7 +16,7 @@
   --btn-text-light: #fff;
 }
 
-.cotizacion-container {
+.inventario-container {
   background-color: var(--bg);
   color: var(--text);
   padding: 1.5rem;
@@ -25,7 +25,7 @@
   animation: fadeIn 0.4s ease-in;
 }
 
-.cotizacion-header {
+.inventario-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -33,12 +33,12 @@
   gap: 1rem;
 }
 
-.cotizacion-header h2 {
+.inventario-header h2 {
   font-size: 1.8rem;
   margin: 0;
 }
 
-.cotizacion-header input {
+.inventario-header input {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: 1px solid var(--border);
@@ -49,17 +49,33 @@
   transition: box-shadow 0.2s ease-in-out;
 }
 
-.cotizacion-header input:focus {
+.inventario-header input:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--accent-hover);
 }
 
-.cotizacion-tabla-wrap {
+.inventario-tabla-wrap {
   overflow-x: auto;
   margin-top: 1rem;
 }
+.inventario-btn-nuevo {
+  background-color: var(--btn-text-dark);
+  color: var(--btn-text-light);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
 
-.cotizacion-tabla {
+.inventario-btn-nuevo:hover {
+  background-color: var(--accent-hover);
+  color: var(--text);
+  transform: scale(1.05);
+}
+.inventario-tabla {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--bg-table);
@@ -68,15 +84,15 @@
   animation: slideUp 0.5s ease-out;
 }
 
-.cotizacion-tabla th,
-.cotizacion-tabla td {
+.inventario-tabla th,
+.inventario-tabla td {
   padding: 0.75rem;
   text-align: center;
   border-bottom: 1px solid var(--border);
   font-size: 0.95rem;
 }
 
-.cotizacion-tabla th {
+.inventario-tabla th {
   background-color: var(--bg-table-header);
   color: var(--text-muted);
   font-weight: 600;
@@ -137,7 +153,68 @@
   border-radius: 4px;
 }
 
+button.activa {
+  background-color: var(--accent);
+  color: var(--btn-text-light);
+  cursor: pointer;
+}
+button.activa:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
 
+.modal-contenido {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: fadeInUp 0.3s ease;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-cerrar:hover {
+  color: #333;
+}
+
+.modal-tabla {
+  width: 100%;
+  margin-top: 1.2rem;
+  border-collapse: collapse;
+}
+
+.modal-tabla th,
+.modal-tabla td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
 /* Animaciones suaves */
 @keyframes fadeIn {
   from {
@@ -163,18 +240,18 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .cotizacion-header {
+  .inventario-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .cotizacion-tabla th,
-  .cotizacion-tabla td {
+  .inventario-tabla th,
+  .inventario-tabla td {
     font-size: 0.85rem;
     padding: 0.5rem;
   }
 
-  .cotizacion-header input {
+  .inventario-header input {
     width: 100%;
   }
 }

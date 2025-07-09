@@ -1,12 +1,18 @@
-<div class="cotizacion-container">
-  <div class="cotizacion-header">
+<div class="inventario-container">
+  <div class="inventario-header">
     <h2>Inventario de Productos</h2>
-    <input type="text" [(ngModel)]="filtro" (input)="aplicarFiltro()"
-      placeholder="🔍 Buscar por nombre, SKU o categoría..." />
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      <input
+        type="text"
+        [(ngModel)]="filtro"
+        placeholder="🔍 Buscar por nombre o SKU"
+      />
+      <button class="inventario-btn-nuevo" (click)="buscarProducto()">Buscar</button>
+    </div>
   </div>
 
-  <div class="cotizacion-tabla-wrap">
-    <table class="cotizacion-tabla">
+  <div class="inventario-tabla-wrap">
+    <table class="inventario-tabla">
       <thead>
         <tr>
           <th>SKU</th>
@@ -20,10 +26,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let p of productosFiltrados">
+        <tr *ngFor="let p of productosPaginados">
           <td>{{ p.sku }}</td>
           <td>{{ p.nombre }}</td>
-          <td>{{ p.codCategoria.nombreCategoria}}</td>
+          <td>{{ p.codCategoria.nombreCategoria }}</td>
           <td>{{ p.codUnidad.unidad }}</td>
           <td>{{ p.cantidad }}</td>
           <td>S/ {{ p.precio | number: '1.2-2' }}</td>
@@ -36,5 +42,33 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Paginación -->
+  <div style="margin-top: 1rem; text-align: center;">
+    <button 
+      *ngFor="let _ of [].constructor(totalPaginas()); let i = index"
+      (click)="cambiarPagina(i + 1)"
+      [class.activa]="paginaActual === i + 1"
+      style="margin: 0 0.3rem; padding: 0.4rem 0.8rem; border: none; border-radius: 4px; cursor:pointer;"
+    >
+      {{ i + 1 }}
+    </button>
+  </div>
+</div>
+
+<!-- Modal de producto encontrado -->
+<div class="modal-overlay" *ngIf="mostrarModal">
+  <div class="modal-contenido">
+    <button class="modal-cerrar" (click)="mostrarModal = false">×</button>
+    <h3>Detalles del producto</h3>
+    <p><strong>Nombre:</strong> {{ productoEncontrado?.nombre }}</p>
+    <p><strong>SKU:</strong> {{ productoEncontrado?.sku }}</p>
+    <p><strong>Categoría:</strong> {{ productoEncontrado?.codCategoria?.nombreCategoria }}</p>
+    <p><strong>Unidad:</strong> {{ productoEncontrado?.codUnidad?.unidad }}</p>
+    <p><strong>Cantidad:</strong> {{ productoEncontrado?.cantidad }}</p>
+    <p><strong>Precio:</strong> S/ {{ productoEncontrado?.precio | number: '1.2-2' }}</p>
+    <p><strong>Proveedor:</strong> {{ productoEncontrado?.codProveedor?.razonSocial }}</p>
+    <p><strong>Estado:</strong> {{ productoEncontrado?.codEstado?.estado }}</p>
   </div>
 </div>

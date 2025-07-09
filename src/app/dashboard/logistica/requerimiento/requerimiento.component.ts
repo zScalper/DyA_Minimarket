@@ -46,9 +46,6 @@ export class RequerimientoComponent implements OnInit {
   onCancelarRegistrar() {
     this.mostrarRegistrar = false;
   }
-  editar(req: RequerimientoDTO): void {
-    this.formulario.setValue(req);
-  }
 
   cotizar(id: number): void {
     this.router.navigate(['/dashboard/logistica/cotizacion/registrar-cotizacion', id]);

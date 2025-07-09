@@ -1,0 +1,44 @@
+<section class="formulario-despacho-container">
+  <form [formGroup]="despachoForm" (ngSubmit)="actualizar()" class="formulario-despacho" novalidate>
+    <h2>Editar despacho</h2>
+
+    <!-- Fecha -->
+    <div class="grupo-formulario">
+      <label for="fecha">Fecha</label>
+      <input id="fecha" type="date" formControlName="fecha" />
+      <span class="mensaje-error" *ngIf="despachoForm.get('fecha')?.touched && despachoForm.get('fecha')?.invalid">
+        * La fecha es obligatoria
+      </span>
+    </div>
+
+    <!-- Tienda -->
+    <div class="grupo-formulario">
+      <label for="codTienda">Tienda</label>
+      <select id="codTienda" formControlName="codTienda">
+        <option [ngValue]="null" disabled>Seleccione una tienda</option>
+        <option *ngFor="let t of tiendas" [ngValue]="t.id">{{ t.nombre }}</option>
+      </select>
+      <span class="mensaje-error" *ngIf="despachoForm.get('codTienda')?.touched && despachoForm.get('codTienda')?.invalid">
+        * Debe seleccionar una tienda
+      </span>
+    </div>
+
+    <!-- Estado -->
+    <div class="grupo-formulario">
+      <label for="codEstado">Estado</label>
+      <select id="codEstado" formControlName="codEstado">
+        <option [ngValue]="null" disabled>Seleccione estado</option>
+        <option *ngFor="let e of estados" [ngValue]="e.id">{{ e.estado }}</option>
+      </select>
+      <span class="mensaje-error" *ngIf="despachoForm.get('codEstado')?.touched && despachoForm.get('codEstado')?.invalid">
+        * Debe seleccionar un estado
+      </span>
+    </div>
+
+    <!-- Botones -->
+    <div class="botones-formulario">
+      <button type="submit" [disabled]="despachoForm.invalid">Actualizar despacho</button>
+      <button type="button" class="btn-eliminar" routerLink="/dashboard/logistica/despachos">Cancelar</button>
+    </div>
+  </form>
+</section>

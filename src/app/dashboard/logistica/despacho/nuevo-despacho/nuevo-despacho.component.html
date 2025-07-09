@@ -1,0 +1,54 @@
+<section class="formulario-despacho-container">
+    <form [formGroup]="despachoForm" novalidate class="formulario-despacho">
+        <h2>Registrar nuevo despacho</h2>
+
+        <div class="grupo-formulario">
+            <label for="codTienda">Tienda</label>
+            <select id="codTienda" formControlName="codTienda">
+                <option [ngValue]="null" disabled>Seleccione tienda</option>
+                <option *ngFor="let t of tiendas" [ngValue]="t.id">{{ t.nombre }}</option>
+            </select>
+        </div>
+
+    </form>
+
+    <form [formGroup]="detalleForm" (ngSubmit)="agregarDetalle()" novalidate class="formulario-detalle">
+        <h3>Productos a despachar</h3>
+
+        <div class="grupo-formulario">
+            <label for="sku">SKU</label>
+            <input id="sku" formControlName="sku" />
+            <span class="mensaje-error" *ngIf="skuError">{{ skuError }}</span>
+
+            <label for="cantidad">Cantidad</label>
+            <input id="cantidad" type="number" formControlName="cantidad" />
+
+            <button type="submit" [disabled]="detalleForm.invalid">Agregar producto</button>
+        </div>
+
+        <div *ngIf="detalles.length > 0" class="tabla-detalles">
+            <h4>Listado de productos</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of detalles">
+                        <td>{{ d.codProducto.sku }}</td>
+                        <td>{{ d.codProducto.nombre }}</td>
+                        <td>{{ d.cantidad }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="botones-formulario">
+                <button (click)="registrar()" [disabled]="despachoForm.invalid || detalles.length === 0">Guardar
+                    despacho</button>
+                <button (click)="cancelarRegistro()">Cancelar</button>
+            </div>
+        </div>
+    </form>
+</section>
