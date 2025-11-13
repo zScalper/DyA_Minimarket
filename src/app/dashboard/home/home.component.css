@@ -5,9 +5,9 @@
   --bg: #ffffff;
   --text: #23242a;
   --primary: #fcb830;
-  --secondary: #29b6f6;
+  --secondary: #171a1b;
   --muted: #888888;
-  --card-bg: #f9f9f9;
+  --card-bg: #18191c;
   --table-header: #fcb830;
   --table-hover: #f6f6f6;
   --border: #e0e0e0;
@@ -16,10 +16,9 @@
 /* Contenedor general */
 .home-container {
   padding: 2rem;
-  background-color: var(--bg);
-  color: var(--text);
   min-height: 100vh;
   display: flex;
+  background: var(--color-bg-content);
   flex-direction: column;
   gap: 2rem;
 }
@@ -41,7 +40,7 @@
 }
 
 .card-metrica {
-  background-color: var(--card-bg);
+  background-color: var(--color-bg-puro);
   border-left: 5px solid var(--primary);
   padding: 1rem 1.5rem;
   border-radius: 6px;
@@ -71,7 +70,7 @@
 /* CONTENEDOR DE TABLA */
 .tabla-mas-vendidos {
   margin-top: 2rem;
-  background-color: var(--card-bg);
+  background-color: var(--color-bg-puro);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -105,12 +104,10 @@
 }
 
 .tabla-mas-vendidos tbody tr:hover {
-  background-color: var(--table-hover);
+  background-color: var(--color-bg-content);
 }
 
-.tabla-mas-vendidos tbody tr:nth-child(even) {
-  background-color: #fcfcfc;
-}
+
 
 /* Badge de estado */
 .estado-morado {

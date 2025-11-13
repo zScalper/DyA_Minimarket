@@ -8,9 +8,9 @@
     width: 100%;
     min-height: 100dvh;
     max-height: 100dvh;
-    background: var(--dashboard-bg);
-    box-shadow: var(--dashboard-shadow);
-    border-right: var(--dashboard-border);
+    background: var(--color-bg);
+    box-shadow: var(--color-shadow);
+    border-right: var(--color-border);
 }
 
 /* Contenido del dashboard */
@@ -18,10 +18,9 @@
     flex-grow: 1;
     padding: 2rem;
     overflow-y: auto;
-    background: #f5f6fa;
+    background: var(--color-bg-content);
     border-radius: 8px 0 0 8px;
     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.18);
-    color: #23242a;
 }
 
 /* Responsive: en móvil, el sidebar se oculta */

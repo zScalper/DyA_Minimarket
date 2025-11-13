@@ -17,7 +17,7 @@
 }
 /* Cabecera móvil activo*/
 .mobile-header.active {
-    background: var(--dashboard-bg);
+    background: var(--color-bg);
     color: white;
     
 }

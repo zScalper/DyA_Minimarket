@@ -7,9 +7,32 @@
     font-feature-settings: none;
     font-variant-ligatures: none;
 }
+/* Tema claro base */
 :root {
-  --dashboard-bg: linear-gradient(135deg, #18191c 0%, #23242a 100%);
-  --dashboard-overlay: rgba(24, 25, 28, 0.85);
-  --dashboard-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
-  --dashboard-border: 1px solid #23242a;
+  --color-bg: linear-gradient(135deg, #f2f2f2 0%, #fafafa 100%);
+  --color-bg-content: #ffffff;
+  --color-overlay: rgba(255, 255, 255, 0.85);
+  --color-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
+  --color-border: 1px solid #e0e0e0;
+  --color-text: #1a1a1a;
+  --color-item: linear-gradient(270deg, #FFE08A 60%, #D9B24C);
+  --color-bg-puro: #f2f2f2;
+}
+
+
+/* Alto contraste: colores duros, relaciones AA/AAA */
+.dark-theme {
+  --color-bg: linear-gradient(135deg, #18191c 0%, #23242a 100%);
+  --color-bg-content: #2a2d32;
+  --color-overlay: rgba(24, 25, 28, 0.85);
+  --color-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  --color-border: 1px solid #23242a;
+  --color-text: #ffffff;
+  --color-item: linear-gradient(270deg, #FCB830 60%, #c99a30);
+  --color-bg-puro: #18191c;
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-text);
 }
