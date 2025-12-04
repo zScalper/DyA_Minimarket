@@ -17,8 +17,7 @@
 }
 
 .usuarios-container {
-  background-color: var(--bg);
-  color: var(--text);
+  color: var(--color-text);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
@@ -36,12 +35,12 @@
 .usuarios-header h2 {
   font-size: 1.8rem;
   margin: 0;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .usuarios-btn-nuevo {
   background-color: var(--accent);
-  color: var(--btn-text-dark);
+  color: var(--color-btn-text);
   font-weight: 600;
   padding: 0.6rem 1rem;
   border-radius: 6px;
@@ -65,8 +64,8 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
-  background-color: var(--bg-table);
-  border: 1px solid var(--border);
+  background-color: var(--color-bg-table);
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   overflow: hidden;
   animation: slideUp 0.5s ease-out;
@@ -76,17 +75,13 @@
 .usuarios-tabla td {
   padding: 0.75rem;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .usuarios-tabla th {
-  background-color: var(--bg-table-header);
+  background-color: var(--color-bg-table-header);
   color: var(--text-muted);
   font-weight: 600;
-}
-
-.usuarios-fila:hover {
-  background-color: var(--hover);
 }
 
 .usuarios-acciones {

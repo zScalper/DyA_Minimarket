@@ -93,13 +93,13 @@
 .tabla-mas-vendidos th,
 .tabla-mas-vendidos td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.95rem;
 }
 
 .tabla-mas-vendidos th {
   background-color: var(--table-header);
-  color: var(--text);
+  color: var(--color-text);
   text-align: left;
 }
 

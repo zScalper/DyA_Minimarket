@@ -12,8 +12,7 @@
 
 /* Contenedor */
 .formulario-despacho-container {
-  background-color: var(--bg);
-  color: var(--text);
+  color: var(--color-text);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -82,7 +81,7 @@
 
 button[type="submit"] {
   background-color: var(--accent);
-  color: var(--text);
+  color: var(--color-text);
   font-weight: 600;
   border: none;
   padding: 0.6rem 1.2rem;

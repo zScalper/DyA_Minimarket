@@ -17,11 +17,9 @@
 }
 
 .inventario-container {
-  background-color: var(--bg);
-  color: var(--text);
+  color: var(--color-text);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
   animation: fadeIn 0.4s ease-in;
 }
 
@@ -41,7 +39,7 @@
 .inventario-header input {
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-border);
   font-size: 0.95rem;
   width: 100%;
   max-width: 300px;
@@ -59,7 +57,7 @@
   margin-top: 1rem;
 }
 .inventario-btn-nuevo {
-  background-color: var(--btn-text-dark);
+  background-color: var(--color-btn-text);
   color: var(--btn-text-light);
   font-weight: 600;
   padding: 0.6rem 1rem;
@@ -72,14 +70,14 @@
 
 .inventario-btn-nuevo:hover {
   background-color: var(--accent-hover);
-  color: var(--text);
+  color: var(--color-text);
   transform: scale(1.05);
 }
 .inventario-tabla {
   width: 100%;
   border-collapse: collapse;
-  background-color: var(--bg-table);
-  border: 1px solid var(--border);
+  background-color: var(--color-bg-table);
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   animation: slideUp 0.5s ease-out;
 }
@@ -88,12 +86,12 @@
 .inventario-tabla td {
   padding: 0.75rem;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.95rem;
 }
 
 .inventario-tabla th {
-  background-color: var(--bg-table-header);
+  background-color: var(--color-bg-table-header);
   color: var(--text-muted);
   font-weight: 600;
 }

@@ -15,8 +15,7 @@
 }
 
 .cotizacion-formulario {
-  background-color: var(--bg);
-  color: var(--text);
+  color: var(--color-text);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -26,7 +25,7 @@
 .cotizacion-formulario h2 {
   font-size: 1.7rem;
   margin-bottom: 1.5rem;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .cotizacion-formulario label {
@@ -48,8 +47,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background-color: var(--bg-table);
-  border: 1px solid var(--border);
+  background-color: var(--color-bg-table);
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -58,12 +57,12 @@ th,
 td {
   padding: 0.75rem;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.95rem;
 }
 
 th {
-  background-color: var(--bg-table-header);
+  background-color: var(--color-bg-table-header);
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -82,7 +81,7 @@ button {
   margin-top: 1.5rem;
   padding: 0.6rem 1.2rem;
   font-weight: 600;
-  color: var(--btn-text-dark);
+  color: var(--color-btn-text);
   background-color: var(--accent);
   border: none;
   border-radius: 6px;

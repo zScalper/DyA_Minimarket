@@ -71,8 +71,17 @@ export class SidebarComponent implements OnInit {
     this.authService.logout(); // Llama al método de cierre de sesión en `AuthService`
     this.router.navigate(['/login']); // Redirige al login después de cerrar sesión
   }
+
   toggleTheme(): void {
     this.themeService.toggleTheme();
     this.isDarkMode = this.themeService.isDarkTheme();
+  }
+
+  increaseFont(): void {
+    this.themeService.increaseFont();
+  }
+
+  decreaseFont(): void {
+    this.themeService.decreaseFont();
   }
 }

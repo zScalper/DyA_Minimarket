@@ -17,6 +17,9 @@
   --color-text: #1a1a1a;
   --color-item: linear-gradient(270deg, #FFE08A 60%, #D9B24C);
   --color-bg-puro: #f2f2f2;
+  --color-bg-table-header: #23242a;
+  --color-bg-table: #f5f6fa;
+  --color-btn-text: #23242a;
 }
 
 
@@ -30,6 +33,9 @@
   --color-text: #ffffff;
   --color-item: linear-gradient(270deg, #FCB830 60%, #c99a30);
   --color-bg-puro: #18191c;
+  --color-bg-table-header: #18191c;
+  --color-bg-table: #23242a;
+  --color-btn-text: #18191c;
 }
 
 html, body {
